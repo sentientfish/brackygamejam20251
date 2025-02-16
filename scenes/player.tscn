@@ -1,0 +1,45 @@
+[gd_scene load_steps=6 format=3 uid="uid://ch8wdr4iyy5qv"]
+
+[ext_resource type="Texture2D" uid="uid://coj3nmqtni3n8" path="res://icon.svg" id="1_6b18e"]
+[ext_resource type="Script" path="res://scripts/player.gd" id="1_ndymx"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xox8q"]
+size = Vector2(120, 119)
+
+[sub_resource type="Animation" id="Animation_4cd7i"]
+resource_name = "shield_block_up"
+step = 0.25
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_nr4rx"]
+_data = {
+"shield_block_up": SubResource("Animation_4cd7i")
+}
+
+[node name="Player" type="CharacterBody2D"]
+script = ExtResource("1_ndymx")
+
+[node name="Shield" type="Node2D" parent="."]
+
+[node name="ShieldSprite" type="Sprite2D" parent="Shield"]
+position = Vector2(-66, 5)
+scale = Vector2(0.804688, 0.875)
+texture = ExtResource("1_6b18e")
+flip_v = true
+
+[node name="Sword" type="Node2D" parent="."]
+
+[node name="SwordSprite" type="Sprite2D" parent="Sword"]
+position = Vector2(88, -33)
+scale = Vector2(0.289063, 0.765625)
+texture = ExtResource("1_6b18e")
+
+[node name="PlayerSprite" type="Sprite2D" parent="."]
+texture = ExtResource("1_6b18e")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_xox8q")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_nr4rx")
+}
