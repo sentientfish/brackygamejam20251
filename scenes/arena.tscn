@@ -1,0 +1,13 @@
+[gd_scene load_steps=2 format=3 uid="uid://cuaglt8wdr002"]
+
+[ext_resource type="PackedScene" uid="uid://ch8wdr4iyy5qv" path="res://scenes/player.tscn" id="1_1kr8c"]
+
+[node name="Arena" type="Node2D"]
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+offset_right = 1920.0
+offset_bottom = 1080.0
+
+[node name="Player" parent="." instance=ExtResource("1_1kr8c")]
+position = Vector2(960, 850)
+scale = Vector2(3, 3)
