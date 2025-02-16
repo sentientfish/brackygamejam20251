@@ -1,0 +1,90 @@
+[gd_scene load_steps=2 format=3 uid="uid://d054vt84axkvt"]
+
+[ext_resource type="Script" path="res://options.gd" id="1_q1k3b"]
+
+[node name="Options" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_q1k3b")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -800.0
+offset_top = -450.0
+offset_right = 800.0
+offset_bottom = 450.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+
+[node name="BGMVolumeContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/BGMVolumeContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+text = "BGM Volume"
+
+[node name="HSlider" type="HSlider" parent="MarginContainer/VBoxContainer/BGMVolumeContainer"]
+custom_minimum_size = Vector2(900, 0)
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 4
+
+[node name="SFXVolumeContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/SFXVolumeContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+text = "SFX Volume"
+
+[node name="HSlider" type="HSlider" parent="MarginContainer/VBoxContainer/SFXVolumeContainer"]
+custom_minimum_size = Vector2(900, 0)
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 4
+
+[node name="MasterVolumeContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/MasterVolumeContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+text = "Master Volume"
+
+[node name="HSlider" type="HSlider" parent="MarginContainer/VBoxContainer/MasterVolumeContainer"]
+custom_minimum_size = Vector2(900, 0)
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 4
+
+[node name="MuteButtonContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/MuteButtonContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+text = "Mute"
+
+[node name="MuteCheckBox" type="CheckBox" parent="MarginContainer/VBoxContainer/MuteButtonContainer"]
+layout_mode = 2
+
+[node name="OptionsBackButton" type="Button" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+text = "Back"
+
+[connection signal="toggled" from="MarginContainer/VBoxContainer/MuteButtonContainer/MuteCheckBox" to="." method="_on_mute_check_box_toggled"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/OptionsBackButton" to="." method="_on_options_back_button_pressed"]

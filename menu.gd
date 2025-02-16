@@ -17,6 +17,7 @@ func _on_start_button_pressed() -> void:
 
 func _on_options_button_pressed() -> void:
 	print("Options Button Pressed!")
+	get_tree().change_scene_to_file("res://options.tscn")
 
 
 func _on_credits_button_pressed() -> void:
