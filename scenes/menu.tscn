@@ -1,13 +1,13 @@
-[gd_scene load_steps=2 format=3 uid="uid://b5v7avr435m65"]
+[gd_scene load_steps=2 format=3 uid="uid://c5tj8j7skx4vg"]
 
-[ext_resource type="Script" path="res://menu.gd" id="1_2cy20"]
+[ext_resource type="Script" path="res://scripts/menu.gd" id="1_a2v4k"]
 
 [node name="Menu" type="Control"]
 layout_mode = 3
 anchors_preset = 0
 offset_right = 1920.0
 offset_bottom = 1080.0
-script = ExtResource("1_2cy20")
+script = ExtResource("1_a2v4k")
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 1
