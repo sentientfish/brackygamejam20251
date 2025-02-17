@@ -1,0 +1,104 @@
+[gd_scene load_steps=14 format=3 uid="uid://d2keyc5bivfqk"]
+
+[ext_resource type="Script" path="res://scenes/enemy.gd" id="1_kk3if"]
+[ext_resource type="Texture2D" uid="uid://dgrrgxn2a68dh" path="res://assets/T1.png" id="1_w0bkb"]
+[ext_resource type="Texture2D" uid="uid://do5e3pqn8482x" path="res://assets/T2.png" id="2_pxj2k"]
+[ext_resource type="Texture2D" uid="uid://bsdfujx6bqklb" path="res://assets/Enemy.png" id="3_i5708"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_uyehj"]
+size = Vector2(192, 75.3125)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_gc8bk"]
+size = Vector2(192, 75.5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_f05na"]
+size = Vector2(192, 76)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_pnjpe"]
+size = Vector2(239, 42)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_yebrp"]
+size = Vector2(239.25, 42)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ag5ug"]
+size = Vector2(239, 42)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bu8gv"]
+size = Vector2(192, 192)
+
+[sub_resource type="Animation" id="Animation_4cd7i"]
+resource_name = "shield_block_up"
+step = 0.25
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_nr4rx"]
+_data = {
+"shield_block_up": SubResource("Animation_4cd7i")
+}
+
+[node name="Enemy" type="CharacterBody2D"]
+script = ExtResource("1_kk3if")
+
+[node name="EnemySprite" type="Sprite2D" parent="."]
+scale = Vector2(3, 3)
+texture = ExtResource("3_i5708")
+
+[node name="Shield" type="Node2D" parent="."]
+
+[node name="ShieldSprite" type="Sprite2D" parent="Shield"]
+position = Vector2(-117, 16)
+scale = Vector2(2, 2)
+texture = ExtResource("1_w0bkb")
+
+[node name="ShieldAreaUp" type="Area2D" parent="Shield"]
+
+[node name="ShieldCollisionUp" type="CollisionShape2D" parent="Shield/ShieldAreaUp"]
+position = Vector2(0, -100)
+shape = SubResource("RectangleShape2D_uyehj")
+
+[node name="ShieldAreaMiddle" type="Area2D" parent="Shield"]
+
+[node name="ShieldCollisionMiddle" type="CollisionShape2D" parent="Shield/ShieldAreaMiddle"]
+position = Vector2(0, -15)
+shape = SubResource("RectangleShape2D_gc8bk")
+
+[node name="ShieldAreaDown" type="Area2D" parent="Shield"]
+
+[node name="ShieldCollisionDown" type="CollisionShape2D" parent="Shield/ShieldAreaDown"]
+position = Vector2(0, 72)
+shape = SubResource("RectangleShape2D_f05na")
+
+[node name="Sword" type="Node2D" parent="."]
+
+[node name="SwordSprite" type="Sprite2D" parent="Sword"]
+position = Vector2(146, -51)
+scale = Vector2(1, 2.89063)
+texture = ExtResource("2_pxj2k")
+
+[node name="SwordAreaUp" type="Area2D" parent="Sword"]
+monitoring = false
+
+[node name="SwordCollisionUp" type="CollisionShape2D" parent="Sword/SwordAreaUp"]
+position = Vector2(0, 160)
+shape = SubResource("RectangleShape2D_pnjpe")
+
+[node name="SwordAreaMiddle" type="Area2D" parent="Sword"]
+monitoring = false
+
+[node name="SwordCollisionMiddle" type="CollisionShape2D" parent="Sword/SwordAreaMiddle"]
+position = Vector2(0, 240)
+shape = SubResource("RectangleShape2D_yebrp")
+
+[node name="SwordAreaDown" type="Area2D" parent="Sword"]
+monitoring = false
+
+[node name="SwordCollisionDown" type="CollisionShape2D" parent="Sword/SwordAreaDown"]
+position = Vector2(0, 320)
+shape = SubResource("RectangleShape2D_ag5ug")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_bu8gv")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_nr4rx")
+}
