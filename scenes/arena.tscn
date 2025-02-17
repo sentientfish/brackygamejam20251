@@ -1,8 +1,10 @@
-[gd_scene load_steps=2 format=3 uid="uid://cuaglt8wdr002"]
+[gd_scene load_steps=3 format=3 uid="uid://cuaglt8wdr002"]
 
 [ext_resource type="PackedScene" uid="uid://ch8wdr4iyy5qv" path="res://scenes/player.tscn" id="1_1kr8c"]
+[ext_resource type="Script" path="res://scripts/arena.gd" id="1_om0ey"]
 
 [node name="Arena" type="Node2D"]
+script = ExtResource("1_om0ey")
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 offset_right = 1920.0
@@ -10,4 +12,11 @@ offset_bottom = 1080.0
 
 [node name="Player" parent="." instance=ExtResource("1_1kr8c")]
 position = Vector2(960, 850)
-scale = Vector2(3, 3)
+scale = Vector2(2, 2)
+
+[node name="ArenaBackButton" type="Button" parent="."]
+offset_right = 8.0
+offset_bottom = 8.0
+text = "Back"
+
+[connection signal="pressed" from="ArenaBackButton" to="." method="_on_arena_back_button_pressed"]
