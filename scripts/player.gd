@@ -9,7 +9,7 @@ var can_move: bool = true
 
 # Used to indicate whether that direction is being blocked or not
 # 0 is up, 1 is middle, 2 is down
-# TODO: have a global variable for the directions?
+# TODO: have a global variable for each direction?
 var blocking: Array = [false, false, false]
 
 func _physics_process(delta: float) -> void:
@@ -28,7 +28,7 @@ func process_player_input(delta: float) -> void:
 	elif Input.is_action_pressed("target_down"):
 		action_direction = 2
 
-	if Input.is_action_pressed("attack") and can_attack:
+	if Input.is_action_just_pressed("attack") and can_attack:
 		attack(action_direction)
 	elif Input.is_action_pressed("block") and can_block:
 		block(action_direction)
