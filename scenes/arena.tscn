@@ -37,7 +37,7 @@ physics_material_override = SubResource("PhysicsMaterial_40apj")
 position = Vector2(0, 590)
 shape = SubResource("WorldBoundaryShape2D_bq4ab")
 
-[node name="LeftBoundary2" type="CollisionShape2D" parent="ArenaBoundary"]
+[node name="RightBoundary" type="CollisionShape2D" parent="ArenaBoundary"]
 position = Vector2(1920, 590)
 rotation = -3.14159
 shape = SubResource("WorldBoundaryShape2D_bq4ab")

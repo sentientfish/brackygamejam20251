@@ -8,11 +8,17 @@ extends CharacterBody2D
 var blocking: Array = [false, false, false]
 var is_blocking: bool = false
 
-# Player Stats
+# Player Base Stats
 @export var stat_health: float = 300.0
 @export var stat_attack: float = 50.0
 @export var stat_block_damage: float = 0.0
 @export var stat_speed: float = 300.0
+
+# Player Current Stats
+@export var current_health: float = stat_health
+@export var current_attack: float = stat_attack
+@export var current_block_damage: float = 0.0
+@export var current_speed: float = 200.0
 
 func _physics_process(delta: float) -> void:
 	process_player_input(delta)
