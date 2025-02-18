@@ -5,12 +5,10 @@ extends Control
 func _ready() -> void:
 	pass # Replace with function body.
 
-
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	pass
 
-
 func _on_credits_back_button_pressed() -> void:
-	print("Credits Back BUtton Pressed!")
+	print("Credits Back Button Pressed!")
 	get_tree().change_scene_to_file("res://scenes/menu.tscn")
