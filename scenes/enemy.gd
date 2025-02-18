@@ -17,8 +17,8 @@ var move_direction: int = -1
 # Enemy Current Stats
 @export var current_health: float = stat_health
 @export var current_attack: float = stat_attack
-@export var current_block_damage: float = 0.0
-@export var current_speed: float = 200.0
+@export var current_block_damage: float = stat_block_damage
+@export var current_speed: float = stat_speed
 
 func _physics_process(delta: float) -> void:
 	velocity.x = move_direction * stat_speed

@@ -18,8 +18,8 @@ var current_block_direction: Enums.ActionDirection = Enums.ActionDirection.NONE
 # Player Current Stats
 @export var current_health: float = stat_health
 @export var current_attack: float = stat_attack
-@export var current_block_damage: float = 0.0
-@export var current_speed: float = 200.0
+@export var current_block_damage: float = stat_block_damage
+@export var current_speed: float = stat_speed
 
 func _physics_process(delta: float) -> void:
 	process_player_input(delta)
@@ -68,7 +68,7 @@ func attack(action_direction: Enums.ActionDirection):
 func _update_block_array(block_direction: Enums.ActionDirection):
 	var updated_blocking_array := [false, false, false]
 	if (block_direction != Enums.ActionDirection.NONE):	
-		updated_blocking_array[int(block_direction) - 1]
+		updated_blocking_array[int(block_direction) - 1] = true
 		
 	blocking = updated_blocking_array
 
@@ -127,7 +127,12 @@ func attacked(damage: int, action_direction: Enums.ActionDirection):
 	if (blocking[int(action_direction) - 1]):
 		print("Player blocked the attack!")
 	else:
-		print("Got hit!")
+		print("Player got hit!")
+		current_health -= damage
+		print("Current player health: " + str(current_health))
+		if (current_health <= 0):
+			print("Player died!")
+			queue_free()
 
 func _on_sword_area_up_body_entered(body: Node2D) -> void:
 	body.attacked(stat_attack, Enums.ActionDirection.UP)
