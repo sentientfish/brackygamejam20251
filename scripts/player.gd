@@ -1,14 +1,5 @@
 extends CharacterBody2D
 
-@onready var animation_player : AnimationPlayer = $AnimationPlayer
-
-# Used to indicate whether that direction is being blocked or not
-# 0 is up, 1 is middle, 2 is down
-# TODO: have a global variable for each direction?
-var blocking: Array = [false, false, false]
-var is_blocking: bool = false
-var current_block_direction: Enums.ActionDirection = Enums.ActionDirection.NONE
-
 # Player Base Stats
 @export var stat_health: float = 300.0
 @export var stat_attack: float = 50.0
@@ -20,6 +11,13 @@ var current_block_direction: Enums.ActionDirection = Enums.ActionDirection.NONE
 @export var current_attack: float = stat_attack
 @export var current_block_damage: float = stat_block_damage
 @export var current_speed: float = stat_speed
+
+# Used to indicate whether that direction is being blocked or not
+var blocking: Array = [false, false, false]
+var is_blocking: bool = false
+var current_block_direction: Enums.ActionDirection = Enums.ActionDirection.NONE
+
+@onready var animation_player : AnimationPlayer = $AnimationPlayer
 
 func _ready():
 	Globals.Player = self

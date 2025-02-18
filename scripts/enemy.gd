@@ -12,17 +12,27 @@ extends CharacterBody2D
 @export var current_block_damage: float = stat_block_damage
 @export var current_speed: float = stat_speed
 
-# TODO: have a global variable for each direction?
+# Used to indicate whether that direction is being blocked or not
 var blocking: Array = [false, false, false]
+var can_block: bool = true
+var is_blocking: bool = false
 var panicking: bool = false
 var panic_run_direction: int = 0
 var panic_timer: Timer = null
+var cornered_block_timer: Timer = null
+var block_duration_timer: Timer = null
+
+@onready var animation_player : AnimationPlayer = $AnimationPlayer
 
 func _ready():
 	panic_timer = get_node("PanicRunTimer")
+	cornered_block_timer = get_node("CorneredBlockTimer")
+	block_duration_timer = get_node("BlockDurationTimer")
 
 func _physics_process(delta: float) -> void:
-	run_away()
+	var is_playing := animation_player.is_playing()
+	if (not is_playing and not is_blocking):
+		run_away()
 
 func run_away():
 	var enemy_x := position.x
@@ -50,14 +60,47 @@ func panic() -> int:
 
 func cornered():
 	# randomly blocks
-	var block_direction: Enums.ActionDirection = Enums.ActionDirection.values()[randi() & 3]
+	var block_direction: Enums.ActionDirection = _get_random_direction()
+	print("Random block direction: " + str(block_direction))
+	
 	block(block_direction)
 	
 func attack(action_direction: Enums.ActionDirection):
-	pass
+	print("Enemy attacking direction: " + 
+		Enums.ActionDirection.keys()[action_direction])
+	# TODO: play an actual animation
+	match action_direction:
+		Enums.ActionDirection.UP:
+			animation_player.play("sword_attack_up")
+		Enums.ActionDirection.MIDDLE:
+			animation_player.play("sword_attack_middle")
+		Enums.ActionDirection.DOWN:
+			animation_player.play("sword_attack_down")
 
 func block(action_direction: Enums.ActionDirection):
-	pass
+	# So, because we have 3 sword areas, this will get called 3x as well
+	# but don't worry, the is_blocking sort of functions as a lock, so it will
+	# only get triggered once, but if you print it will show 3x so it might
+	# get confusing to debug
+	if (not is_blocking):
+		match action_direction:
+			Enums.ActionDirection.UP:
+				animation_player.play("shield_block_up", -1, 2.0)
+			Enums.ActionDirection.MIDDLE:
+				animation_player.play("shield_block_middle", -1, 2.0)
+			Enums.ActionDirection.DOWN:
+				animation_player.play("shield_block_down", -1, 2.0)
+	
+		is_blocking = true
+		_update_block_array(action_direction)
+		block_duration_timer.start()
+
+func unblock():
+	print("Enemy unblocking!")
+	_update_block_array(Enums.ActionDirection.NONE)
+	can_block = false
+	is_blocking = false
+	cornered_block_timer.start()
 
 func attacked(damage: int, action_direction: Enums.ActionDirection):
 	panicking = true
@@ -65,7 +108,10 @@ func attacked(damage: int, action_direction: Enums.ActionDirection):
 		Enums.ActionDirection.keys()[action_direction])
 	if (blocking[int(action_direction) - 1]):
 		print("Enemy blocked the attack!")
+		
 		# attack back
+		var attack_direction: Enums.ActionDirection = _get_random_direction()
+		attack(attack_direction)
 	else:
 		print("Enemy hit!")
 		current_health -= damage
@@ -79,10 +125,50 @@ func attacked(damage: int, action_direction: Enums.ActionDirection):
 	run_away()
 	panic_timer.start()
 
-func _on_enemy_area_body_entered(body: Node2D) -> void:
-	cornered()
+func _update_block_array(block_direction: Enums.ActionDirection):
+	var updated_blocking_array := [false, false, false]
+	if (block_direction != Enums.ActionDirection.NONE):	
+		updated_blocking_array[int(block_direction) - 1] = true
+		
+	blocking = updated_blocking_array
+
+func _get_random_direction():
+	var random_int = randi() % 2
+	var direction : Enums.ActionDirection = \
+		Enums.ActionDirection.values()[random_int + 1]
+	
+	return direction
+
+func _on_enemy_area_area_entered(area: Area2D) -> void:
+	# A bit janky, but basically, the Player's 3 SwordArea* are going to enter
+	# the EnemyArea. To check if it's the Player's, we climb the tree twice
+	# Player -> Sword -> SwordArea*
+	if ("player" in area.get_parent().get_parent().name.to_lower()):
+		if (not panicking and can_block):
+			cornered()
 
 func _on_panic_run_timer_timeout() -> void:
 	panic_timer.stop()
 	panicking = false
 	current_speed = stat_speed
+
+func _on_cornered_block_timer_timeout() -> void:
+	cornered_block_timer.stop()
+	can_block = true
+
+func _on_block_duration_timer_timeout() -> void:
+	block_duration_timer.stop()
+	can_block = false
+	unblock()
+
+func _on_sword_area_up_body_entered(body: Node2D) -> void:
+	if ("player" in body.name.to_lower()):
+		body.attacked(stat_attack, Enums.ActionDirection.UP)
+
+func _on_sword_area_middle_body_entered(body: Node2D) -> void:
+	if ("player" in body.name.to_lower()):
+		body.attacked(stat_attack, Enums.ActionDirection.MIDDLE)
+
+func _on_sword_area_down_body_entered(body: Node2D) -> void:
+	if ("player" in body.name.to_lower()):
+		body.attacked(stat_attack, Enums.ActionDirection.DOWN)
