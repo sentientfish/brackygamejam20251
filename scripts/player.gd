@@ -1,14 +1,5 @@
 extends CharacterBody2D
 
-@onready var animation_player : AnimationPlayer = $AnimationPlayer
-
-# Used to indicate whether that direction is being blocked or not
-# 0 is up, 1 is middle, 2 is down
-# TODO: have a global variable for each direction?
-var blocking: Array = [false, false, false]
-var is_blocking: bool = false
-var current_block_direction: Enums.ActionDirection = Enums.ActionDirection.NONE
-
 # Player Base Stats
 @export var stat_health: float = 300.0
 @export var stat_attack: float = 50.0
@@ -20,6 +11,16 @@ var current_block_direction: Enums.ActionDirection = Enums.ActionDirection.NONE
 @export var current_attack: float = stat_attack
 @export var current_block_damage: float = stat_block_damage
 @export var current_speed: float = stat_speed
+
+# Used to indicate whether that direction is being blocked or not
+var blocking: Array = [false, false, false]
+var is_blocking: bool = false
+var current_block_direction: Enums.ActionDirection = Enums.ActionDirection.NONE
+
+@onready var animation_player : AnimationPlayer = $AnimationPlayer
+
+func _ready():
+	Globals.Player = self
 
 func _physics_process(delta: float) -> void:
 	process_player_input(delta)
@@ -48,10 +49,6 @@ func process_player_input(delta: float) -> void:
 		unblock(action_direction)
 	
 	move_and_slide()
-	for index in get_slide_collision_count():
-		var collision := get_slide_collision(index)
-		var body := collision.get_collider()
-		print("Player collided with: " + body.name)
 
 func attack(action_direction: Enums.ActionDirection):
 	print("Player attacking direction: " + 
@@ -135,10 +132,13 @@ func attacked(damage: int, action_direction: Enums.ActionDirection):
 			queue_free()
 
 func _on_sword_area_up_body_entered(body: Node2D) -> void:
-	body.attacked(stat_attack, Enums.ActionDirection.UP)
+	if ("enemy" in body.name.to_lower()):
+		body.attacked(stat_attack, Enums.ActionDirection.UP)
 
 func _on_sword_area_middle_body_entered(body: Node2D) -> void:
-	body.attacked(stat_attack, Enums.ActionDirection.MIDDLE)
+	if ("enemy" in body.name.to_lower()):
+		body.attacked(stat_attack, Enums.ActionDirection.MIDDLE)
 
 func _on_sword_area_down_body_entered(body: Node2D) -> void:
-	body.attacked(stat_attack, Enums.ActionDirection.DOWN)
+	if ("enemy" in body.name.to_lower()):
+		body.attacked(stat_attack, Enums.ActionDirection.DOWN)

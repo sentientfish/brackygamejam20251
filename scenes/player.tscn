@@ -15,16 +15,16 @@ size = Vector2(192, 75.5)
 size = Vector2(192, 76)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xdwk7"]
-size = Vector2(238, 42)
+size = Vector2(150, 42)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2hsp2"]
-size = Vector2(238.5, 42)
+size = Vector2(150, 42)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_bkjqc"]
-size = Vector2(237.75, 41.5)
+size = Vector2(150, 41.5)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xox8q"]
-size = Vector2(192, 192)
+size = Vector2(185, 185)
 
 [sub_resource type="Animation" id="Animation_lld8y"]
 length = 0.001
@@ -298,7 +298,7 @@ shape = SubResource("RectangleShape2D_bkjqc")
 scale = Vector2(3, 3)
 texture = ExtResource("4_j8ytr")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="PlayerCollision" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_xox8q")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]

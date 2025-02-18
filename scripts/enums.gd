@@ -4,5 +4,5 @@ enum ActionDirection {
 	NONE,
 	UP,
 	MIDDLE,
-	DOWN
+	DOWN,
 }
