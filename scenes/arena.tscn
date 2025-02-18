@@ -1,7 +1,14 @@
-[gd_scene load_steps=3 format=3 uid="uid://cuaglt8wdr002"]
+[gd_scene load_steps=6 format=3 uid="uid://cuaglt8wdr002"]
 
 [ext_resource type="PackedScene" uid="uid://ch8wdr4iyy5qv" path="res://scenes/player.tscn" id="1_1kr8c"]
 [ext_resource type="Script" path="res://scripts/arena.gd" id="1_om0ey"]
+[ext_resource type="PackedScene" uid="uid://d2keyc5bivfqk" path="res://scenes/enemy.tscn" id="2_yu7fl"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_40apj"]
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_bq4ab"]
+normal = Vector2(0.99999, -0.00458711)
+distance = 2.29814
 
 [node name="Arena" type="Node2D"]
 script = ExtResource("1_om0ey")
@@ -14,9 +21,25 @@ offset_bottom = 1080.0
 position = Vector2(960, 850)
 scale = Vector2(2, 2)
 
+[node name="Enemy" parent="." instance=ExtResource("2_yu7fl")]
+position = Vector2(960, 335)
+scale = Vector2(2, 2)
+
 [node name="ArenaBackButton" type="Button" parent="."]
 offset_right = 8.0
 offset_bottom = 8.0
 text = "Back"
+
+[node name="ArenaBoundary" type="StaticBody2D" parent="."]
+physics_material_override = SubResource("PhysicsMaterial_40apj")
+
+[node name="LeftBoundary" type="CollisionShape2D" parent="ArenaBoundary"]
+position = Vector2(0, 590)
+shape = SubResource("WorldBoundaryShape2D_bq4ab")
+
+[node name="RightBoundary" type="CollisionShape2D" parent="ArenaBoundary"]
+position = Vector2(1920, 590)
+rotation = -3.14159
+shape = SubResource("WorldBoundaryShape2D_bq4ab")
 
 [connection signal="pressed" from="ArenaBackButton" to="." method="_on_arena_back_button_pressed"]

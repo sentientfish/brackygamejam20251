@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://ch8wdr4iyy5qv"]
+[gd_scene load_steps=20 format=3 uid="uid://ch8wdr4iyy5qv"]
 
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_ndymx"]
 [ext_resource type="Texture2D" uid="uid://dgrrgxn2a68dh" path="res://assets/T1.png" id="2_b7svk"]
@@ -14,25 +14,228 @@ size = Vector2(192, 75.5)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qrqje"]
 size = Vector2(192, 76)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_0y04h"]
-size = Vector2(316, 42)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xdwk7"]
+size = Vector2(238, 42)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2hsp2"]
-size = Vector2(315, 42)
+size = Vector2(238.5, 42)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_bkjqc"]
-size = Vector2(315, 41.5)
+size = Vector2(237.75, 41.5)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xox8q"]
 size = Vector2(192, 192)
 
-[sub_resource type="Animation" id="Animation_4cd7i"]
-resource_name = "shield_block_up"
+[sub_resource type="Animation" id="Animation_vs7me"]
+resource_name = "sword_attack_up"
+length = 0.5
 step = 0.25
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sword/SwordSprite:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.25, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [Vector2(146, -50), Vector2(146, -80), Vector2(146, -50)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sword/SwordAreaUp:monitoring")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.25, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [false, true, false]
+}
+
+[sub_resource type="Animation" id="Animation_lld8y"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sword/SwordAreaMiddle:monitoring")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sword/SwordAreaDown:monitoring")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sword/SwordSprite:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(146, -51)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Shield/ShieldSprite:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-117, 16)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Sword/SwordAreaUp:monitoring")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_f7bs3"]
+resource_name = "sword_attack_middle"
+length = 0.5
+step = 0.25
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sword/SwordAreaMiddle:monitoring")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.25, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [false, true, false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sword/SwordSprite:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.25, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [Vector2(146, -50), Vector2(146, -80), Vector2(146, -50)]
+}
+
+[sub_resource type="Animation" id="Animation_diara"]
+resource_name = "sword_attack_down"
+length = 0.5
+step = 0.25
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sword/SwordAreaDown:monitoring")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.25, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [false, true, false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sword/SwordSprite:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.25, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [Vector2(146, -50), Vector2(146, -80), Vector2(146, -50)]
+}
+
+[sub_resource type="Animation" id="Animation_irade"]
+resource_name = "shield_block_up"
+length = 0.25
+step = 0.25
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Shield/ShieldSprite:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.25),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [Vector2(-117, 16), Vector2(-77, -96)]
+}
+
+[sub_resource type="Animation" id="Animation_fqlim"]
+resource_name = "shield_block_middle"
+length = 0.25
+step = 0.25
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Shield/ShieldSprite:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.25),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [Vector2(-117, 16), Vector2(-62, -12)]
+}
+
+[sub_resource type="Animation" id="Animation_lp1sj"]
+resource_name = "shield_block_down"
+length = 0.25
+step = 0.25
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Shield/ShieldSprite:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.25),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [Vector2(-117, 16), Vector2(-71, 60)]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_nr4rx"]
 _data = {
-"shield_block_up": SubResource("Animation_4cd7i")
+"RESET": SubResource("Animation_lld8y"),
+"shield_block_down": SubResource("Animation_lp1sj"),
+"shield_block_middle": SubResource("Animation_fqlim"),
+"shield_block_up": SubResource("Animation_irade"),
+"sword_attack_down": SubResource("Animation_diara"),
+"sword_attack_middle": SubResource("Animation_f7bs3"),
+"sword_attack_up": SubResource("Animation_vs7me")
 }
 
 [node name="Player" type="CharacterBody2D"]
@@ -71,21 +274,24 @@ scale = Vector2(1, 2.89063)
 texture = ExtResource("3_whgb4")
 
 [node name="SwordAreaUp" type="Area2D" parent="Sword"]
+monitoring = false
 
 [node name="SwordCollisionUp" type="CollisionShape2D" parent="Sword/SwordAreaUp"]
-position = Vector2(0, -320)
-shape = SubResource("RectangleShape2D_0y04h")
+position = Vector2(0, -345)
+shape = SubResource("RectangleShape2D_xdwk7")
 
 [node name="SwordAreaMiddle" type="Area2D" parent="Sword"]
+monitoring = false
 
 [node name="SwordCollisionMiddle" type="CollisionShape2D" parent="Sword/SwordAreaMiddle"]
-position = Vector2(0, -260)
+position = Vector2(0, -265)
 shape = SubResource("RectangleShape2D_2hsp2")
 
 [node name="SwordAreaDown" type="Area2D" parent="Sword"]
+monitoring = false
 
 [node name="SwordCollisionDown" type="CollisionShape2D" parent="Sword/SwordAreaDown"]
-position = Vector2(0, -200)
+position = Vector2(0, -185)
 shape = SubResource("RectangleShape2D_bkjqc")
 
 [node name="PlayerSprite" type="Sprite2D" parent="."]
@@ -99,3 +305,7 @@ shape = SubResource("RectangleShape2D_xox8q")
 libraries = {
 "": SubResource("AnimationLibrary_nr4rx")
 }
+
+[connection signal="body_entered" from="Sword/SwordAreaUp" to="." method="_on_sword_area_up_body_entered"]
+[connection signal="body_entered" from="Sword/SwordAreaMiddle" to="." method="_on_sword_area_middle_body_entered"]
+[connection signal="body_entered" from="Sword/SwordAreaDown" to="." method="_on_sword_area_down_body_entered"]
