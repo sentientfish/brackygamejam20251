@@ -89,10 +89,10 @@ func unblock(action_direction: Enums.ActionDirection):
 func attacked(damage: int, action_direction: Enums.ActionDirection):
 	print("Player being attacked! damage " + str(damage) + ", direction: " + str(action_direction))
 	if blocking[action_direction]:
-		print("Blocked the attack!")
+		print("Player blocked the attack!")
 	else:
 		print("Got hit!")
-	
+
 func _on_sword_area_up_body_entered(body: Node2D) -> void:
 	body.attacked(stat_attack, Enums.ActionDirection.UP)
 

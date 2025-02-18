@@ -14,8 +14,8 @@ size = Vector2(192, 75.5)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qrqje"]
 size = Vector2(192, 76)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_0y04h"]
-size = Vector2(239, 42)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xdwk7"]
+size = Vector2(238, 42)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2hsp2"]
 size = Vector2(238.5, 42)
@@ -33,26 +33,26 @@ step = 0.25
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Sword/SwordAreaUp:monitoring")
+tracks/0/path = NodePath("Sword/SwordSprite:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.25, 0.5),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 1,
-"values": [false, true, false]
+"values": [Vector2(146, -50), Vector2(146, -80), Vector2(146, -50)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Sword/SwordSprite:position")
+tracks/1/path = NodePath("Sword/SwordAreaUp:monitoring")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
 "times": PackedFloat32Array(0, 0.25, 0.5),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 1,
-"values": [Vector2(146, -50), Vector2(146, -80), Vector2(146, -50)]
+"values": [false, true, false]
 }
 
 [sub_resource type="Animation" id="Animation_lld8y"]
@@ -60,19 +60,19 @@ length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Sword/SwordAreaUp:monitoring")
+tracks/0/path = NodePath("Sword/SwordAreaMiddle:monitoring")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [true]
+"values": [false]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Sword/SwordAreaMiddle:monitoring")
+tracks/1/path = NodePath("Sword/SwordAreaDown:monitoring")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -84,38 +84,38 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("Sword/SwordAreaDown:monitoring")
+tracks/2/path = NodePath("Sword/SwordSprite:position")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
+"update": 0,
+"values": [Vector2(146, -51)]
 }
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("Sword/SwordSprite:position")
+tracks/3/path = NodePath("Shield/ShieldSprite:position")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(146, -51)]
+"values": [Vector2(-117, 16)]
 }
 tracks/4/type = "value"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("Shield/ShieldSprite:position")
+tracks/4/path = NodePath("Sword/SwordAreaUp:monitoring")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(-117, 16)]
+"update": 1,
+"values": [false]
 }
 
 [sub_resource type="Animation" id="Animation_f7bs3"]
@@ -274,10 +274,11 @@ scale = Vector2(1, 2.89063)
 texture = ExtResource("3_whgb4")
 
 [node name="SwordAreaUp" type="Area2D" parent="Sword"]
+monitoring = false
 
 [node name="SwordCollisionUp" type="CollisionShape2D" parent="Sword/SwordAreaUp"]
 position = Vector2(0, -345)
-shape = SubResource("RectangleShape2D_0y04h")
+shape = SubResource("RectangleShape2D_xdwk7")
 
 [node name="SwordAreaMiddle" type="Area2D" parent="Sword"]
 monitoring = false
