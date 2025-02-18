@@ -28,13 +28,14 @@ func _physics_process(delta: float) -> void:
 		move_direction *= -1
 
 func attacked(damage: int, action_direction: Enums.ActionDirection):
-	print("Enemy being attacked! damage " + str(damage) + ", direction: " + str(action_direction))
-	if blocking[action_direction]:
+	print("Enemy being attacked! damage " + str(damage) + ", direction: " +
+		Enums.ActionDirection.keys()[action_direction])
+	if (blocking[int(action_direction) - 1]):
 		print("Enemy blocked the attack!")
 	else:
 		print("Enemy hit!")
 		current_health -= damage
 		print("Current enemy health: " + str(current_health))
-		if current_health <= 0:
+		if (current_health <= 0):
 			print("Enemy died!")
 			queue_free()
