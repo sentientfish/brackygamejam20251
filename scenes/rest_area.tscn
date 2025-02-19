@@ -1,0 +1,59 @@
+[gd_scene load_steps=6 format=3 uid="uid://2b8g8dmcu8th"]
+
+[ext_resource type="Script" path="res://scripts/rest_area.gd" id="1_n2wjs"]
+[ext_resource type="PackedScene" uid="uid://cjs7ipahm117s" path="res://scenes/mysterious_npc.tscn" id="1_rjef0"]
+[ext_resource type="PackedScene" uid="uid://0tle71xwn5n8" path="res://ui/hud.tscn" id="2_ogy3s"]
+[ext_resource type="PackedScene" uid="uid://km5rrlys53ei" path="res://scenes/item.tscn" id="3_qq1me"]
+[ext_resource type="PackedScene" uid="uid://bau575m3jy3jt" path="res://scenes/vendor_minigame.tscn" id="5_l703v"]
+
+[node name="RestArea" type="Node2D"]
+script = ExtResource("1_n2wjs")
+
+[node name="Hud" parent="." instance=ExtResource("2_ogy3s")]
+visible = false
+offset_right = 1920.0
+offset_bottom = 1080.0
+
+[node name="Panel" type="Panel" parent="."]
+offset_left = 52.0
+offset_top = 122.0
+offset_right = 1379.0
+offset_bottom = 989.0
+
+[node name="MysteriousNPC" parent="." instance=ExtResource("1_rjef0")]
+position = Vector2(1640, 532)
+
+[node name="ItemFirst" parent="." instance=ExtResource("3_qq1me")]
+position = Vector2(250, 480)
+scale = Vector2(0.75, 0.75)
+
+[node name="ItemSecond" parent="." instance=ExtResource("3_qq1me")]
+position = Vector2(550, 480)
+scale = Vector2(0.75, 0.75)
+
+[node name="ItemThird" parent="." instance=ExtResource("3_qq1me")]
+position = Vector2(850, 480)
+scale = Vector2(0.75, 0.75)
+
+[node name="ItemFourth" parent="." instance=ExtResource("3_qq1me")]
+position = Vector2(1150, 480)
+scale = Vector2(0.75, 0.75)
+
+[node name="ContinueButton" type="Button" parent="."]
+offset_left = 1586.0
+offset_top = 876.0
+offset_right = 1684.0
+offset_bottom = 948.0
+text = "Continue"
+
+[node name="VendorMinigame" parent="." instance=ExtResource("5_l703v")]
+position = Vector2(132, 686)
+
+[node name="Label" type="Label" parent="."]
+offset_left = 1498.0
+offset_top = 233.0
+offset_right = 1674.0
+offset_bottom = 300.0
+text = "dang bro, thats unfortunate"
+
+[connection signal="pressed" from="ContinueButton" to="." method="_on_continue_button_pressed"]
