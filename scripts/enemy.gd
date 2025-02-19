@@ -21,6 +21,7 @@ var panic_run_direction: int = 0
 var panic_timer: Timer = null
 var cornered_block_timer: Timer = null
 var block_duration_timer: Timer = null
+var last_block_direction: Enums.ActionDirection = Enums.ActionDirection.NONE
 
 @onready var animation_player : AnimationPlayer = $AnimationPlayer
 
@@ -83,6 +84,7 @@ func block(action_direction: Enums.ActionDirection):
 	# only get triggered once, but if you print it will show 3x so it might
 	# get confusing to debug
 	if (not is_blocking):
+		last_block_direction = action_direction
 		match action_direction:
 			Enums.ActionDirection.UP:
 				animation_player.play("shield_block_up", -1, 2.0)
@@ -95,12 +97,22 @@ func block(action_direction: Enums.ActionDirection):
 		_update_block_array(action_direction)
 		block_duration_timer.start()
 
-func unblock():
+func unblock(action_direction: Enums.ActionDirection):
 	print("Enemy unblocking!")
 	_update_block_array(Enums.ActionDirection.NONE)
 	can_block = false
 	is_blocking = false
 	cornered_block_timer.start()
+	last_block_direction = Enums.ActionDirection.NONE
+	
+	match action_direction:
+	# these play() functions are basically play_backwards(), but 4x as fast
+		Enums.ActionDirection.UP:
+			animation_player.play("shield_block_up", -1, -4.0, true)
+		Enums.ActionDirection.MIDDLE:
+			animation_player.play("shield_block_middle", -1, -4.0, true)
+		Enums.ActionDirection.DOWN:
+			animation_player.play("shield_block_down", -1, -4.0, true)
 
 func attacked(damage: int, action_direction: Enums.ActionDirection):
 	panicking = true
@@ -159,7 +171,7 @@ func _on_cornered_block_timer_timeout() -> void:
 func _on_block_duration_timer_timeout() -> void:
 	block_duration_timer.stop()
 	can_block = false
-	unblock()
+	unblock(last_block_direction)
 
 func _on_sword_area_up_body_entered(body: Node2D) -> void:
 	if ("player" in body.name.to_lower()):
