@@ -2,6 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://ch8wdr4iyy5qv" path="res://scenes/player.tscn" id="1_1kr8c"]
 [ext_resource type="Script" path="res://scripts/arena.gd" id="1_om0ey"]
+[ext_resource type="Texture2D" uid="uid://d0fprq22mf6fy" path="res://assets/arena.png" id="2_fu6gx"]
 [ext_resource type="PackedScene" uid="uid://d2keyc5bivfqk" path="res://scenes/enemy.tscn" id="2_yu7fl"]
 [ext_resource type="PackedScene" uid="uid://0tle71xwn5n8" path="res://ui/hud.tscn" id="4_251cf"]
 
@@ -15,6 +16,21 @@ distance = 2.29814
 process_mode = 1
 script = ExtResource("1_om0ey")
 
+<<<<<<< Updated upstream
+=======
+[node name="MarginContainer" type="MarginContainer" parent="."]
+offset_right = 1920.0
+offset_bottom = 1080.0
+
+[node name="TextureRect" type="TextureRect" parent="MarginContainer"]
+layout_mode = 2
+texture = ExtResource("2_fu6gx")
+
+[node name="Player" parent="." instance=ExtResource("1_1kr8c")]
+position = Vector2(960, 850)
+scale = Vector2(2, 2)
+
+>>>>>>> Stashed changes
 [node name="Enemy" parent="." instance=ExtResource("2_yu7fl")]
 position = Vector2(960, 335)
 scale = Vector2(2, 2)
