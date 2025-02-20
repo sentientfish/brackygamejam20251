@@ -11,7 +11,7 @@ func _process(delta: float) -> void:
 
 func _on_options_back_button_pressed() -> void:
 	print("Options Back Button clicked!")
-	get_tree().change_scene_to_file("res://scenes/menu.tscn")
+	get_tree().change_scene_to_file("res://ui/main_menu.tscn")
 
 func _on_mute_check_box_toggled(toggled_on: bool) -> void:
 	print("Options Mute Checkbox toggled to " + str(toggled_on) + "!")

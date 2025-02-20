@@ -1,0 +1,38 @@
+[gd_scene load_steps=3 format=3 uid="uid://0tle71xwn5n8"]
+
+[ext_resource type="Script" path="res://scripts/hud.gd" id="1_y1n5m"]
+[ext_resource type="PackedScene" uid="uid://b2spv0f7v8xk1" path="res://ui/menu_overlay.tscn" id="2_jqxug"]
+
+[node name="Hud" type="Control"]
+process_mode = 3
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_y1n5m")
+
+[node name="MenuOverlay" parent="." instance=ExtResource("2_jqxug")]
+layout_mode = 1
+
+[node name="GameHUDContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -185.0
+offset_top = 25.0
+offset_right = -30.0
+offset_bottom = 96.0
+grow_horizontal = 0
+
+[node name="UIContainer" type="HBoxContainer" parent="GameHUDContainer"]
+layout_mode = 2
+size_flags_horizontal = 8
+
+[node name="MenuButton" type="Button" parent="GameHUDContainer/UIContainer"]
+layout_mode = 2
+text = "Menu"
+
+[connection signal="pressed" from="GameHUDContainer/UIContainer/MenuButton" to="." method="_on_menu_button_pressed"]
