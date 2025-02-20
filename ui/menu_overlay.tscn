@@ -1,0 +1,61 @@
+[gd_scene load_steps=2 format=3 uid="uid://b2spv0f7v8xk1"]
+
+[ext_resource type="Script" path="res://scripts/menu_overlay.gd" id="1_uqqb4"]
+
+[node name="MenuOverlay" type="Control"]
+process_mode = 2
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_uqqb4")
+
+[node name="MenuOverlayContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -140.0
+offset_top = -160.0
+offset_right = 140.0
+offset_bottom = 160.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Panel" type="Panel" parent="MenuOverlayContainer"]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MenuOverlayContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="PauseLabel" type="Label" parent="MenuOverlayContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "PAUSED"
+
+[node name="MainMenuButton" type="Button" parent="MenuOverlayContainer/VBoxContainer"]
+layout_mode = 2
+text = "Go Back to Main Menu"
+
+[node name="OptionsButton" type="Button" parent="MenuOverlayContainer/VBoxContainer"]
+layout_mode = 2
+text = "Options"
+
+[node name="QuitButton" type="Button" parent="MenuOverlayContainer/VBoxContainer"]
+layout_mode = 2
+text = "Exit Game"
+
+[node name="ContinueButton" type="Button" parent="MenuOverlayContainer/VBoxContainer"]
+layout_mode = 2
+text = "Continue"
+
+[connection signal="pressed" from="MenuOverlayContainer/VBoxContainer/MainMenuButton" to="." method="_on_main_menu_button_pressed"]
+[connection signal="pressed" from="MenuOverlayContainer/VBoxContainer/OptionsButton" to="." method="_on_options_button_pressed"]
+[connection signal="pressed" from="MenuOverlayContainer/VBoxContainer/QuitButton" to="." method="_on_quit_button_pressed"]
+[connection signal="pressed" from="MenuOverlayContainer/VBoxContainer/ContinueButton" to="." method="_on_continue_button_pressed"]
