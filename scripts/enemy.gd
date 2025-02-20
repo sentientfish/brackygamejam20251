@@ -1,4 +1,4 @@
-extends CharacterBody2D
+class_name Enemy extends CharacterBody2D
 
 # Enemy Signals
 signal enemy_died
@@ -153,7 +153,7 @@ func _update_block_array(block_direction: Enums.ActionDirection):
 
 func _get_random_direction():
 	var random_int = randi() % 2
-	var direction : Enums.ActionDirection = \
+	var direction: Enums.ActionDirection = \
 		Enums.ActionDirection.values()[random_int + 1]
 	
 	return direction

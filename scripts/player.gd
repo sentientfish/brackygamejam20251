@@ -1,4 +1,4 @@
-extends CharacterBody2D
+class_name Player extends CharacterBody2D
 
 # Player Base Stats
 @export var stat_health: float = 300.0

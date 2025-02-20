@@ -4,7 +4,7 @@ var win_timer: Timer = null
 var enemy: Node2D = null
 var victory_label: Label = null
 
-var victory_string = "Victory!!!"
+var victory_string = "Victory!!!\nReturning to Rest Area in\n"
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -17,8 +17,7 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	victory_label.text = victory_string + "\nReturning to Rest Area in\n" + \
-		str(int(win_timer.time_left))
+	victory_label.text = ("%s%d" % [victory_string, int(win_timer.time_left)])
 
 func _on_win_timer_timeout() -> void:
 	# We win, go to rest area!
