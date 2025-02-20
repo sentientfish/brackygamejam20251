@@ -19,7 +19,7 @@ var current_block_direction: Enums.ActionDirection = Enums.ActionDirection.NONE
 
 @onready var animation_player : AnimationPlayer = $AnimationPlayer
 
-func _ready():
+func _ready() -> void:
 	Globals.Player = self
 
 func _physics_process(delta: float) -> void:
@@ -129,6 +129,7 @@ func attacked(damage: int, action_direction: Enums.ActionDirection):
 		print("Current player health: " + str(current_health))
 		if (current_health <= 0):
 			print("Player died!")
+			Globals.Player = null
 			queue_free()
 
 func _on_sword_area_up_body_entered(body: Node2D) -> void:

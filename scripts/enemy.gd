@@ -1,5 +1,8 @@
 extends CharacterBody2D
 
+# Enemy Signals
+signal enemy_died
+
 # Enemy Base Stats
 @export var stat_health: float = 300.0
 @export var stat_attack: float = 50.0
@@ -23,9 +26,9 @@ var cornered_block_timer: Timer = null
 var block_duration_timer: Timer = null
 var last_block_direction: Enums.ActionDirection = Enums.ActionDirection.NONE
 
-@onready var animation_player : AnimationPlayer = $AnimationPlayer
+@onready var animation_player: AnimationPlayer = $AnimationPlayer
 
-func _ready():
+func _ready() -> void:
 	panic_timer = get_node("PanicRunTimer")
 	cornered_block_timer = get_node("CorneredBlockTimer")
 	block_duration_timer = get_node("BlockDurationTimer")
@@ -36,6 +39,9 @@ func _physics_process(delta: float) -> void:
 		run_away()
 
 func run_away():
+	# Player died
+	if (Globals.Player):
+		pass
 	var enemy_x := position.x
 	var player_x := Globals.Player.position.x
 	
@@ -130,6 +136,7 @@ func attacked(damage: int, action_direction: Enums.ActionDirection):
 		print("Current enemy health: " + str(current_health))
 		if (current_health <= 0):
 			print("Enemy died!")
+			enemy_died.emit()
 			queue_free()
 	
 	# Start PanicRunTimer

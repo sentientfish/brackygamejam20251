@@ -1,5 +1,14 @@
 extends Control
 
+signal pause_state_toggled(paused: bool)
+
+var paused: bool = false:
+	get:
+		return paused
+	set(new_value):
+		paused = new_value
+		get_tree().paused = paused
+		pause_state_toggled.emit(paused)
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -9,6 +18,5 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	pass
 
-func _on_credits_back_button_pressed() -> void:
-	print("Credits Back Button Pressed!")
-	get_tree().change_scene_to_file("res://ui/main_menu.tscn")
+func _on_menu_button_pressed() -> void:
+	paused = not paused

@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=3 uid="uid://km5rrlys53ei"]
+
+[ext_resource type="Texture2D" uid="uid://da6x83g3ehxif" path="res://assets/sprites/sentient_mcnugget.png" id="1_muwge"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1jp6x"]
+size = Vector2(250, 250)
+
+[node name="Item" type="Node2D"]
+
+[node name="ItemSprite" type="Sprite2D" parent="."]
+position = Vector2(0, -0.5)
+scale = Vector2(1, 0.997619)
+texture = ExtResource("1_muwge")
+
+[node name="ItemArea" type="Area2D" parent="."]
+
+[node name="ItemCollision" type="CollisionShape2D" parent="ItemArea"]
+position = Vector2(16, 2)
+shape = SubResource("RectangleShape2D_1jp6x")

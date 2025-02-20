@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://cuaglt8wdr002"]
+[gd_scene load_steps=7 format=3 uid="uid://cuaglt8wdr002"]
 
 [ext_resource type="PackedScene" uid="uid://ch8wdr4iyy5qv" path="res://scenes/player.tscn" id="1_1kr8c"]
 [ext_resource type="Script" path="res://scripts/arena.gd" id="1_om0ey"]
 [ext_resource type="PackedScene" uid="uid://d2keyc5bivfqk" path="res://scenes/enemy.tscn" id="2_yu7fl"]
+[ext_resource type="PackedScene" uid="uid://0tle71xwn5n8" path="res://ui/hud.tscn" id="4_251cf"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_40apj"]
 
@@ -11,24 +12,16 @@ normal = Vector2(0.99999, -0.00458711)
 distance = 2.29814
 
 [node name="Arena" type="Node2D"]
+process_mode = 1
 script = ExtResource("1_om0ey")
-
-[node name="MarginContainer" type="MarginContainer" parent="."]
-offset_right = 1920.0
-offset_bottom = 1080.0
-
-[node name="Player" parent="." instance=ExtResource("1_1kr8c")]
-position = Vector2(960, 850)
-scale = Vector2(2, 2)
 
 [node name="Enemy" parent="." instance=ExtResource("2_yu7fl")]
 position = Vector2(960, 335)
 scale = Vector2(2, 2)
 
-[node name="ArenaBackButton" type="Button" parent="."]
-offset_right = 8.0
-offset_bottom = 8.0
-text = "Back"
+[node name="Player" parent="." instance=ExtResource("1_1kr8c")]
+position = Vector2(960, 850)
+scale = Vector2(2, 2)
 
 [node name="ArenaBoundary" type="StaticBody2D" parent="."]
 physics_material_override = SubResource("PhysicsMaterial_40apj")
@@ -42,4 +35,18 @@ position = Vector2(1870, 590)
 rotation = -3.14159
 shape = SubResource("WorldBoundaryShape2D_bq4ab")
 
-[connection signal="pressed" from="ArenaBackButton" to="." method="_on_arena_back_button_pressed"]
+[node name="Hud" parent="." instance=ExtResource("4_251cf")]
+offset_right = 1920.0
+offset_bottom = 1080.0
+
+[node name="VictoryLabel" type="Label" parent="."]
+offset_right = 1920.0
+offset_bottom = 250.0
+size_flags_horizontal = 4
+theme_override_font_sizes/font_size = 100
+text = "Temp Text"
+
+[node name="WinTimer" type="Timer" parent="."]
+wait_time = 5.0
+
+[connection signal="timeout" from="WinTimer" to="." method="_on_win_timer_timeout"]
