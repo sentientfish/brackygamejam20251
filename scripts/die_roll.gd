@@ -1,5 +1,5 @@
 extends Control
-
+@onready var sfx = preload("res://assets/sounds/dice-142528.mp3")
 @onready var die1 = $DieFace
 @onready var die2 = $DieFace2
 
@@ -13,6 +13,7 @@ func get_random_die():
 
 
 func _ready() -> void:
+	$AudioStreamPlayer2D.play()
 	randomize()
 	die1.texture = get_random_die()
 	die2.texture = get_random_die()

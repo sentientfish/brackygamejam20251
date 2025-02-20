@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://bq5lihru7c27n"]
+[gd_scene load_steps=4 format=3 uid="uid://bq5lihru7c27n"]
 
 [ext_resource type="Script" path="res://scripts/die_roll.gd" id="1_xjv8g"]
 [ext_resource type="Texture2D" uid="uid://by38ebvcx2f8a" path="res://assets/sprites/die_1.png" id="2_hw00a"]
+[ext_resource type="AudioStream" uid="uid://cp6uko2o3bksh" path="res://assets/sounds/dice-142528.mp3" id="3_0h8l3"]
 
 [node name="DieRoll" type="Control"]
 layout_mode = 3
@@ -20,3 +21,6 @@ texture = ExtResource("2_hw00a")
 [node name="DieFace2" type="Sprite2D" parent="."]
 position = Vector2(-74, 2)
 texture = ExtResource("2_hw00a")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_0h8l3")
