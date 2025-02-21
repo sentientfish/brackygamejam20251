@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dwt3avmppn20s"
-path="res://.godot/imported/Food Poisioning.png-e8a1c6019efe9615e99c3b189e106019.ctex"
+uid="uid://dx5k3bla82t1m"
+path="res://.godot/imported/BigBadShield.png-e2cdf834362df69f9968bd4b1fe712cb.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/Food Poisioning.png"
-dest_files=["res://.godot/imported/Food Poisioning.png-e8a1c6019efe9615e99c3b189e106019.ctex"]
+source_file="res://assets/sprites/vendor_items/BigBadShield.png"
+dest_files=["res://.godot/imported/BigBadShield.png-e2cdf834362df69f9968bd4b1fe712cb.ctex"]
 
 [params]
 

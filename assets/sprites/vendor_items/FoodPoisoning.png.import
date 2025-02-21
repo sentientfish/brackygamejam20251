@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://bh1jmp6dinr80"
-path="res://.godot/imported/Food-Poisioning.png-56be39b63958f730eff74f2436b147e4.ctex"
+path="res://.godot/imported/FoodPoisoning.png-09941e82a03706e9db424b00aae0fc47.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/Food-Poisioning.png"
-dest_files=["res://.godot/imported/Food-Poisioning.png-56be39b63958f730eff74f2436b147e4.ctex"]
+source_file="res://assets/sprites/vendor_items/FoodPoisoning.png"
+dest_files=["res://.godot/imported/FoodPoisoning.png-09941e82a03706e9db424b00aae0fc47.ctex"]
 
 [params]
 

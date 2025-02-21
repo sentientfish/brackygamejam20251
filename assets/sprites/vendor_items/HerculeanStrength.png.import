@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://crd0k8831fa8b"
-path="res://.godot/imported/Electric Shield.png-793b2ac0afda8197ace419544ddf3bfb.ctex"
+uid="uid://ch74q0myhat5l"
+path="res://.godot/imported/HerculeanStrength.png-219d7799ce2ad3219cf8cb9061b53cea.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/Electric Shield.png"
-dest_files=["res://.godot/imported/Electric Shield.png-793b2ac0afda8197ace419544ddf3bfb.ctex"]
+source_file="res://assets/sprites/vendor_items/HerculeanStrength.png"
+dest_files=["res://.godot/imported/HerculeanStrength.png-219d7799ce2ad3219cf8cb9061b53cea.ctex"]
 
 [params]
 

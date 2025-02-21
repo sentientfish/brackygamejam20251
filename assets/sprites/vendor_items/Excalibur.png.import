@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://c3usi3lypp8dy"
-path="res://.godot/imported/Excalibur.png-3cee2706df3345835922d20dfdf42556.ctex"
+path="res://.godot/imported/Excalibur.png-3bc703ebdad0f1c4701e4e78ba56b72d.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/Excalibur.png"
-dest_files=["res://.godot/imported/Excalibur.png-3cee2706df3345835922d20dfdf42556.ctex"]
+source_file="res://assets/sprites/vendor_items/Excalibur.png"
+dest_files=["res://.godot/imported/Excalibur.png-3bc703ebdad0f1c4701e4e78ba56b72d.ctex"]
 
 [params]
 

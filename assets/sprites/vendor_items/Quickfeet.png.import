@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dfe3kx42wbk1l"
-path="res://.godot/imported/Dice Mini Game.png-dc26d8e766604363ce01de86860e27a1.ctex"
+uid="uid://c3tcc8lbgmn2v"
+path="res://.godot/imported/Quickfeet.png-b4de77b0ab085c99ffe0f5046cfd82eb.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/Dice Mini Game.png"
-dest_files=["res://.godot/imported/Dice Mini Game.png-dc26d8e766604363ce01de86860e27a1.ctex"]
+source_file="res://assets/sprites/vendor_items/Quickfeet.png"
+dest_files=["res://.godot/imported/Quickfeet.png-b4de77b0ab085c99ffe0f5046cfd82eb.ctex"]
 
 [params]
 

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://covowoh56qp6l"
-path="res://.godot/imported/Big Bad Shield.png-373cfc27a2ac7ff1775747af32bac723.ctex"
+uid="uid://d1f8mqnehros6"
+path="res://.godot/imported/dice_minigame.png-d992ebde4c3dbc0ab6e9fef4c52f2726.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/Big Bad Shield.png"
-dest_files=["res://.godot/imported/Big Bad Shield.png-373cfc27a2ac7ff1775747af32bac723.ctex"]
+source_file="res://assets/dice_minigame.png"
+dest_files=["res://.godot/imported/dice_minigame.png-d992ebde4c3dbc0ab6e9fef4c52f2726.ctex"]
 
 [params]
 
