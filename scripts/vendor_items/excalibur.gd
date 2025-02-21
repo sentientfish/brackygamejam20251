@@ -1,7 +1,6 @@
 class_name Excalibur extends Effect
 
 func trigger_effect(character: CharacterBody2D):
-	print("trigger excalibur effect")
 	character.current_attack += 300
 
 func _init():
