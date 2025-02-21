@@ -1,13 +1,23 @@
-[gd_scene load_steps=6 format=3 uid="uid://2b8g8dmcu8th"]
+[gd_scene load_steps=11 format=3 uid="uid://2b8g8dmcu8th"]
 
 [ext_resource type="Script" path="res://scripts/rest_area.gd" id="1_n2wjs"]
 [ext_resource type="PackedScene" uid="uid://cjs7ipahm117s" path="res://scenes/mysterious_npc.tscn" id="1_rjef0"]
+[ext_resource type="Texture2D" uid="uid://deeofjvye2sxm" path="res://assets/Vendor Minigame.png" id="2_8v5qt"]
 [ext_resource type="PackedScene" uid="uid://0tle71xwn5n8" path="res://ui/hud.tscn" id="2_ogy3s"]
 [ext_resource type="PackedScene" uid="uid://km5rrlys53ei" path="res://scenes/item.tscn" id="3_qq1me"]
 [ext_resource type="PackedScene" uid="uid://bau575m3jy3jt" path="res://scenes/vendor_minigame.tscn" id="5_l703v"]
+[ext_resource type="Texture2D" uid="uid://crd0k8831fa8b" path="res://assets/Electric Shield.png" id="7_o2wom"]
+[ext_resource type="Texture2D" uid="uid://c3usi3lypp8dy" path="res://assets/Excalibur.png" id="8_tdnhc"]
+[ext_resource type="Texture2D" uid="uid://dwt3avmppn20s" path="res://assets/Food Poisioning.png" id="9_pxtl8"]
+[ext_resource type="Texture2D" uid="uid://c3tcc8lbgmn2v" path="res://assets/Quickfeet.png" id="10_w02b6"]
 
 [node name="RestArea" type="Node2D"]
 script = ExtResource("1_n2wjs")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("2_8v5qt")
 
 [node name="Hud" parent="." instance=ExtResource("2_ogy3s")]
 visible = false
@@ -15,12 +25,14 @@ offset_right = 1920.0
 offset_bottom = 1080.0
 
 [node name="Panel" type="Panel" parent="."]
+visible = false
 offset_left = 52.0
 offset_top = 122.0
 offset_right = 1379.0
 offset_bottom = 989.0
 
 [node name="MysteriousNPC" parent="." instance=ExtResource("1_rjef0")]
+visible = false
 position = Vector2(1640, 532)
 
 [node name="ItemFirst" parent="." instance=ExtResource("3_qq1me")]
@@ -55,5 +67,21 @@ offset_top = 233.0
 offset_right = 1674.0
 offset_bottom = 300.0
 text = "dang bro, thats unfortunate"
+
+[node name="ElectricShield" type="Sprite2D" parent="."]
+position = Vector2(558, 481)
+texture = ExtResource("7_o2wom")
+
+[node name="Excalibur" type="Sprite2D" parent="."]
+position = Vector2(861, 476)
+texture = ExtResource("8_tdnhc")
+
+[node name="FoodPoisioning" type="Sprite2D" parent="."]
+position = Vector2(1161, 473)
+texture = ExtResource("9_pxtl8")
+
+[node name="Quickfeet" type="Sprite2D" parent="."]
+position = Vector2(256, 479)
+texture = ExtResource("10_w02b6")
 
 [connection signal="pressed" from="ContinueButton" to="." method="_on_continue_button_pressed"]

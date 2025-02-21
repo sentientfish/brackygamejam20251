@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://bau575m3jy3jt"]
+[gd_scene load_steps=3 format=3 uid="uid://bau575m3jy3jt"]
 
-[ext_resource type="Texture2D" uid="uid://by38ebvcx2f8a" path="res://assets/sprites/die_1.png" id="1_rm8qw"]
+[ext_resource type="PackedScene" uid="uid://bq5lihru7c27n" path="res://scenes/die_roll.tscn" id="1_3ykat"]
+[ext_resource type="Texture2D" uid="uid://dfe3kx42wbk1l" path="res://assets/Dice Mini Game.png" id="2_n2jp6"]
 
 [node name="VendorMinigame" type="Node2D"]
 
@@ -8,14 +9,24 @@
 offset_right = 1159.0
 offset_bottom = 366.0
 
-[node name="Die1" type="Sprite2D" parent="Panel"]
-position = Vector2(839, 202)
-scale = Vector2(3.84375, 2.92969)
-texture = ExtResource("1_rm8qw")
+[node name="TextureRect" type="TextureRect" parent="Panel"]
+layout_mode = 0
+offset_right = 1920.0
+offset_bottom = 1080.0
+scale = Vector2(0.639998, 0.359999)
+texture = ExtResource("2_n2jp6")
+
+[node name="DieRoll" parent="Panel" instance=ExtResource("1_3ykat")]
+layout_mode = 1
+offset_left = 114.5
+offset_right = 114.5
+scale = Vector2(3, 3)
 
 [node name="Label" type="Label" parent="Panel"]
-offset_left = 222.0
-offset_top = 107.0
-offset_right = 695.0
-offset_bottom = 386.0
+visible = false
+layout_mode = 0
+offset_left = 122.0
+offset_top = 36.0
+offset_right = 595.0
+offset_bottom = 315.0
 text = "Imagine losing"
