@@ -7,8 +7,8 @@ var PlayerStatusEffects := []
 var EnemyStatusEffects := []
 
 var VendorItems := [
-	#HerculeanStrength.new(),
+	HerculeanStrength.new(),
 	Excalibur.new(),
-	#Quickfeet.new(),
-	#TrollsHeart.new(),
+	Quickfeet.new(),
+	TrollsHeart.new(),
 ]
