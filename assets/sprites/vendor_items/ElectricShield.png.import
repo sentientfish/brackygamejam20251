@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c3tcc8lbgmn2v"
-path="res://.godot/imported/Quickfeet.png-64184ffa9614ae2d742b1b64f43ab853.ctex"
+uid="uid://cjb4gvwk161df"
+path="res://.godot/imported/ElectricShield.png-b1727718dc7ba2c87b581b74bdd1e0c2.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/Quickfeet.png"
-dest_files=["res://.godot/imported/Quickfeet.png-64184ffa9614ae2d742b1b64f43ab853.ctex"]
+source_file="res://assets/sprites/vendor_items/ElectricShield.png"
+dest_files=["res://.godot/imported/ElectricShield.png-b1727718dc7ba2c87b581b74bdd1e0c2.ctex"]
 
 [params]
 

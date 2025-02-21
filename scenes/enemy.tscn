@@ -284,7 +284,6 @@ scale = Vector2(2, 2)
 texture = ExtResource("4_71bxb")
 
 [node name="SwordAreaUp" type="Area2D" parent="Sword"]
-visible = false
 monitoring = false
 
 [node name="SwordCollisionUp" type="CollisionShape2D" parent="Sword/SwordAreaUp"]
@@ -292,7 +291,6 @@ position = Vector2(0, 160)
 shape = SubResource("RectangleShape2D_pnjpe")
 
 [node name="SwordAreaMiddle" type="Area2D" parent="Sword"]
-visible = false
 monitoring = false
 
 [node name="SwordCollisionMiddle" type="CollisionShape2D" parent="Sword/SwordAreaMiddle"]
@@ -300,7 +298,6 @@ position = Vector2(0, 240)
 shape = SubResource("RectangleShape2D_yebrp")
 
 [node name="SwordAreaDown" type="Area2D" parent="Sword"]
-visible = false
 monitoring = false
 
 [node name="SwordCollisionDown" type="CollisionShape2D" parent="Sword/SwordAreaDown"]

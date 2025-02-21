@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://ch74q0myhat5l"
-path="res://.godot/imported/herculean_strength.png-702fff30443ce9cb6ee8582a6497c6e9.ctex"
+path="res://.godot/imported/HerculeanStrength.png-219d7799ce2ad3219cf8cb9061b53cea.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/sprites/vendor_items/herculean_strength.png"
-dest_files=["res://.godot/imported/herculean_strength.png-702fff30443ce9cb6ee8582a6497c6e9.ctex"]
+source_file="res://assets/sprites/vendor_items/HerculeanStrength.png"
+dest_files=["res://.godot/imported/HerculeanStrength.png-219d7799ce2ad3219cf8cb9061b53cea.ctex"]
 
 [params]
 
