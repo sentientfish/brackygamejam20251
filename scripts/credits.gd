@@ -10,5 +10,4 @@ func _process(delta: float) -> void:
 	pass
 
 func _on_credits_back_button_pressed() -> void:
-	print("Credits Back Button Pressed!")
 	get_tree().change_scene_to_file("res://ui/main_menu.tscn")

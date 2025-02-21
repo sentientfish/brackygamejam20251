@@ -29,9 +29,14 @@ var last_block_direction: Enums.ActionDirection = Enums.ActionDirection.NONE
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 
 func _ready() -> void:
+	Globals.Enemy = self
 	panic_timer = get_node("PanicRunTimer")
 	cornered_block_timer = get_node("CorneredBlockTimer")
 	block_duration_timer = get_node("BlockDurationTimer")
+	
+	# Triggers all effects on enemy
+	for effect in Globals.EnemyStatusEffects:
+		effect.trigger_effect(self)
 
 func _physics_process(delta: float) -> void:
 	var is_playing := animation_player.is_playing()
@@ -68,7 +73,6 @@ func panic() -> int:
 func cornered():
 	# randomly blocks
 	var block_direction: Enums.ActionDirection = _get_random_direction()
-	print("Random block direction: " + str(block_direction))
 	
 	block(block_direction)
 	
@@ -104,7 +108,6 @@ func block(action_direction: Enums.ActionDirection):
 		block_duration_timer.start()
 
 func unblock(action_direction: Enums.ActionDirection):
-	print("Enemy unblocking!")
 	_update_block_array(Enums.ActionDirection.NONE)
 	can_block = false
 	is_blocking = false
@@ -125,9 +128,7 @@ func attacked(damage: int, action_direction: Enums.ActionDirection):
 	print("Enemy being attacked! damage " + str(damage) + ", direction: " +
 		Enums.ActionDirection.keys()[action_direction])
 	if (blocking[int(action_direction) - 1]):
-		print("Enemy blocked the attack!")
-		
-		# attack back
+		# enemy blocked, attack back
 		var attack_direction: Enums.ActionDirection = _get_random_direction()
 		attack(attack_direction)
 	else:
@@ -180,14 +181,11 @@ func _on_block_duration_timer_timeout() -> void:
 	can_block = false
 	unblock(last_block_direction)
 
-func _on_sword_area_up_body_entered(body: Node2D) -> void:
-	if ("player" in body.name.to_lower()):
-		body.attacked(stat_attack, Enums.ActionDirection.UP)
+func _on_sword_area_up_body_entered(player: Player) -> void:
+	player.attacked(stat_attack, Enums.ActionDirection.UP)
 
-func _on_sword_area_middle_body_entered(body: Node2D) -> void:
-	if ("player" in body.name.to_lower()):
-		body.attacked(stat_attack, Enums.ActionDirection.MIDDLE)
+func _on_sword_area_middle_body_entered(player: Player) -> void:
+	player.attacked(stat_attack, Enums.ActionDirection.MIDDLE)
 
-func _on_sword_area_down_body_entered(body: Node2D) -> void:
-	if ("player" in body.name.to_lower()):
-		body.attacked(stat_attack, Enums.ActionDirection.DOWN)
+func _on_sword_area_down_body_entered(player: Player) -> void:
+	player.attacked(stat_attack, Enums.ActionDirection.DOWN)

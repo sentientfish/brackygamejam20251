@@ -1,7 +1,6 @@
 extends Node2D
 
 var win_timer: Timer = null
-var enemy: Node2D = null
 var victory_label: Label = null
 
 var victory_string = "Victory!!!\nReturning to Rest Area in\n"
@@ -12,8 +11,8 @@ func _ready() -> void:
 	victory_label = get_node("VictoryLabel")
 	victory_label.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
 	victory_label.hide()
-	enemy = get_node("Enemy")
-	enemy.connect("enemy_died", _on_enemy_died)
+	
+	Globals.Enemy.connect("enemy_died", _on_enemy_died)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:

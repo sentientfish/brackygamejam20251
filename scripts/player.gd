@@ -21,6 +21,13 @@ var current_block_direction: Enums.ActionDirection = Enums.ActionDirection.NONE
 
 func _ready() -> void:
 	Globals.Player = self
+	
+	# Trigger all effects on player
+	for effect in Globals.PlayerStatusEffects:
+		print("Triggering effect: " + effect.effect_name)
+		effect.trigger_effect(self)
+	
+	print("current attack: " + str(current_attack))
 
 func _physics_process(delta: float) -> void:
 	process_player_input(delta)
@@ -29,9 +36,9 @@ func process_player_input(delta: float) -> void:
 	var is_playing := animation_player.is_playing()
 	var move_direction := Input.get_axis("move_left", "move_right")
 	if (move_direction and not is_playing and not is_blocking):
-		velocity.x = move_direction * stat_speed
+		velocity.x = move_direction * current_speed
 	else:
-		velocity.x = move_toward(velocity.x, 0, stat_speed)
+		velocity.x = move_toward(velocity.x, 0, current_speed)
 
 	var action_direction := Enums.ActionDirection.MIDDLE
 	if (Input.is_action_pressed("target_up")):
@@ -132,14 +139,11 @@ func attacked(damage: int, action_direction: Enums.ActionDirection):
 			Globals.Player = null
 			queue_free()
 
-func _on_sword_area_up_body_entered(body: Node2D) -> void:
-	if ("enemy" in body.name.to_lower()):
-		body.attacked(stat_attack, Enums.ActionDirection.UP)
+func _on_sword_area_up_body_entered(enemy: Enemy) -> void:
+	enemy.attacked(current_attack, Enums.ActionDirection.UP)
 
-func _on_sword_area_middle_body_entered(body: Node2D) -> void:
-	if ("enemy" in body.name.to_lower()):
-		body.attacked(stat_attack, Enums.ActionDirection.MIDDLE)
+func _on_sword_area_middle_body_entered(enemy: Enemy) -> void:
+	enemy.attacked(current_attack, Enums.ActionDirection.MIDDLE)
 
-func _on_sword_area_down_body_entered(body: Node2D) -> void:
-	if ("enemy" in body.name.to_lower()):
-		body.attacked(stat_attack, Enums.ActionDirection.DOWN)
+func _on_sword_area_down_body_entered(enemy: Enemy) -> void:
+	enemy.attacked(current_attack, Enums.ActionDirection.DOWN)
