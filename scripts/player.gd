@@ -15,6 +15,7 @@ class_name Player extends CharacterBody2D
 # Used to indicate whether that direction is being blocked or not
 var blocking: Array = [false, false, false]
 var is_blocking: bool = false
+var block_all: bool = false
 var current_block_direction: Enums.ActionDirection = Enums.ActionDirection.NONE
 
 @onready var animation_player : AnimationPlayer = $AnimationPlayer
@@ -48,9 +49,12 @@ func process_player_input(delta: float) -> void:
 
 	if (Input.is_action_just_pressed("attack") and not is_playing):
 		attack(action_direction)
-	elif (Input.is_action_pressed("block") and
-		current_block_direction != action_direction):
-		block(action_direction)
+	elif (Input.is_action_pressed("block")):
+		if (block_all):
+			action_direction = Enums.ActionDirection.ALL
+		
+		if (current_block_direction != action_direction):
+				block(action_direction)
 	
 	if (Input.is_action_just_released("block")):
 		unblock(action_direction)
@@ -69,15 +73,7 @@ func attack(action_direction: Enums.ActionDirection):
 		Enums.ActionDirection.DOWN:
 			animation_player.play("sword_attack_down")
 
-func _update_block_array(block_direction: Enums.ActionDirection):
-	var updated_blocking_array := [false, false, false]
-	if (block_direction != Enums.ActionDirection.NONE):	
-		updated_blocking_array[int(block_direction) - 1] = true
-		
-	blocking = updated_blocking_array
-
 func block(action_direction: Enums.ActionDirection):
-	# TODO: Play blocking animation and hold shield there
 	print("Player blocking direction: " +
 		Enums.ActionDirection.keys()[action_direction])
 	
@@ -95,6 +91,8 @@ func block(action_direction: Enums.ActionDirection):
 					animation_player.play("shield_block_middle", -1, 0.0, true)
 				Enums.ActionDirection.DOWN:
 					animation_player.play("shield_block_down", -1, 0.0, true)
+				Enums.ActionDirection.ALL:
+					animation_player.play("shield_block_middle", -1, 0.0, true)
 	else:
 		# we have not blocked yet
 		match action_direction:
@@ -104,6 +102,8 @@ func block(action_direction: Enums.ActionDirection):
 				animation_player.play("shield_block_middle", -1, 2.0)
 			Enums.ActionDirection.DOWN:
 				animation_player.play("shield_block_down", -1, 2.0)
+			Enums.ActionDirection.ALL:
+				animation_player.play("shield_block_middle", -1, 2.0)
 	
 	is_blocking = true
 	current_block_direction = action_direction
@@ -124,6 +124,8 @@ func unblock(action_direction: Enums.ActionDirection):
 			animation_player.play("shield_block_middle", -1, -4.0, true)
 		Enums.ActionDirection.DOWN:
 			animation_player.play("shield_block_down", -1, -4.0, true)
+		Enums.ActionDirection.ALL:
+			animation_player.play("shield_block_middle", -1, -4.0, true)
 	
 func attacked(damage: int, action_direction: Enums.ActionDirection):
 	print("Player being attacked! damage " + str(damage) + ", direction: " +
@@ -138,6 +140,15 @@ func attacked(damage: int, action_direction: Enums.ActionDirection):
 			print("Player died!")
 			Globals.Player = null
 			queue_free()
+
+func _update_block_array(block_direction: Enums.ActionDirection):
+	var updated_blocking_array := [false, false, false]
+	if (block_direction == Enums.ActionDirection.ALL):
+		updated_blocking_array = [true, true, true]
+	elif (block_direction != Enums.ActionDirection.NONE):	
+		updated_blocking_array[int(block_direction) - 1] = true
+		
+	blocking = updated_blocking_array
 
 func _on_sword_area_up_body_entered(enemy: Enemy) -> void:
 	enemy.attacked(current_attack, Enums.ActionDirection.UP)

@@ -14,7 +14,6 @@ offset_bottom = 40.0
 texture = ExtResource("2_vb25c")
 
 [node name="Hud" parent="." instance=ExtResource("2_ogy3s")]
-visible = false
 offset_right = 1920.0
 offset_bottom = 1080.0
 

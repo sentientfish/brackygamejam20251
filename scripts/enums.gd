@@ -5,6 +5,7 @@ enum ActionDirection {
 	UP,
 	MIDDLE,
 	DOWN,
+	ALL,
 }
 
 enum DiceFace {

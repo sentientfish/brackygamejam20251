@@ -136,7 +136,6 @@ func attacked(damage: int, action_direction: Enums.ActionDirection):
 		print("Enemy hit!")
 		current_health -= damage
 		print("Current enemy health: " + str(current_health))
-			
 	
 	# Start PanicRunTimer
 	panic_run_direction = panic()
