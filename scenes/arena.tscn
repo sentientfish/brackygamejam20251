@@ -41,10 +41,6 @@ position = Vector2(1870, 590)
 rotation = -3.14159
 shape = SubResource("WorldBoundaryShape2D_bq4ab")
 
-[node name="Hud" parent="." instance=ExtResource("4_251cf")]
-offset_right = 1920.0
-offset_bottom = 1080.0
-
 [node name="VictoryLabel" type="Label" parent="."]
 offset_right = 1920.0
 offset_bottom = 250.0
@@ -53,5 +49,9 @@ theme_override_font_sizes/font_size = 100
 
 [node name="WinTimer" type="Timer" parent="."]
 wait_time = 5.0
+
+[node name="Hud" parent="." instance=ExtResource("4_251cf")]
+offset_right = 1920.0
+offset_bottom = 1080.0
 
 [connection signal="timeout" from="WinTimer" to="." method="_on_win_timer_timeout"]

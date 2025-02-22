@@ -7,10 +7,10 @@ var owned_stacks: int = 0
 var available: bool = true
 var target_player: bool = true
 
-func trigger_effect(character: CharacterBody2D):
+func trigger_effect(character: CharacterBody2D) -> void:
 	pass
 
-func remove_from_store():
+func remove_from_store() -> void:
 	var self_index := 0
 	for item in Globals.VendorItems:
 		if (item != self):
@@ -21,7 +21,7 @@ func remove_from_store():
 	Globals.VendorItems.remove_at(self_index)
 	available = false
 
-func append_effect():
+func append_effect() -> void:
 	var target_status_effect_list := []
 	if (target_player):
 		target_status_effect_list = Globals.PlayerStatusEffects

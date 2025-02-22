@@ -1,5 +1,9 @@
 extends Node
 
+signal CombatStarted
+signal EnemyDied
+signal PlayerDied
+
 var Player: Player = null
 var Enemy: Enemy = null
 

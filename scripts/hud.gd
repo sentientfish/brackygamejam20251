@@ -18,5 +18,5 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	pass
 
-func _on_menu_button_pressed() -> void:
+func _on_pause_menu_button_pressed() -> void:
 	paused = not paused

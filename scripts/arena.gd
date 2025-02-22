@@ -12,7 +12,8 @@ func _ready() -> void:
 	victory_label.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
 	victory_label.hide()
 	
-	Globals.Enemy.connect("enemy_died", _on_enemy_died)
+	Globals.connect("EnemyDied", _on_enemy_died)
+	Globals.CombatStarted.emit()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
