@@ -3,6 +3,8 @@ extends Node
 var Player: Player = null
 var Enemy: Enemy = null
 
+var Victories := 0
+
 var PlayerStatusEffects := []
 var EnemyStatusEffects := []
 

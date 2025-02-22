@@ -32,6 +32,7 @@ func _ready() -> void:
 
 func _physics_process(delta: float) -> void:
 	process_player_input(delta)
+	_check_death()
 
 func process_player_input(delta: float) -> void:
 	var is_playing := animation_player.is_playing()
@@ -138,10 +139,13 @@ func attacked(enemy: Enemy, damage: int, action_direction: Enums.ActionDirection
 		print("Player got hit!")
 		current_health -= damage
 		print("Current player health: " + str(current_health))
-		if (current_health <= 0):
-			print("Player died!")
-			Globals.Player = null
-			queue_free()
+
+func _check_death():
+	if (current_health <= 0):
+		print("Player died!")
+		Globals.Player = null
+		queue_free()
+		get_tree().change_scene_to_file("res://ui/defeat.tscn")
 
 func _update_block_array(block_direction: Enums.ActionDirection):
 	var updated_blocking_array := [false, false, false]
