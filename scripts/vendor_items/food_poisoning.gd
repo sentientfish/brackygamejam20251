@@ -11,8 +11,8 @@ func _ready() -> void:
 func trigger_effect(character: CharacterBody2D) -> void:
 	for i in range(0, owned_stacks):
 		poison_damage += 50
-
-	while (not combat_finished and character.current_health > 0):
+	
+	while (not combat_finished and is_instance_valid(character)):
 		print("Poison triggered")
 		_apply_damage_overtime(character)
 		await character.get_tree().create_timer(poison_timer).timeout

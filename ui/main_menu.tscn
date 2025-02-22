@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=3 uid="uid://c5tj8j7skx4vg"]
 
 [ext_resource type="Script" path="res://scripts/main_menu.gd" id="1_rvbci"]
-[ext_resource type="Texture2D" uid="uid://mtowhknhcget" path="res://assets/arena.png" id="2_i7qrl"]
+[ext_resource type="Texture2D" uid="uid://mtowhknhcget" path="res://assets/Arena.png" id="2_i7qrl"]
 [ext_resource type="AudioStream" uid="uid://b4w8233icrskw" path="res://assets/sounds/Nothing_Can_Go_Wrong.wav" id="3_tw5a6"]
 [ext_resource type="AudioStream" uid="uid://gvleenx72hnn" path="res://assets/sounds/blipSelectV1.wav" id="4_y6xhc"]
 [ext_resource type="AudioStream" uid="uid://duff40s86phro" path="res://assets/sounds/Swordhitv2.wav" id="5_tjmvx"]
