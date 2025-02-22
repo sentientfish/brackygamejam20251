@@ -30,7 +30,7 @@ func _ready() -> void:
 	panic_timer = get_node("PanicRunTimer")
 	cornered_block_timer = get_node("CorneredBlockTimer")
 	block_duration_timer = get_node("BlockDurationTimer")
-	
+
 	# Triggers all effects on enemy
 	for effect in Globals.EnemyStatusEffects:
 		effect.trigger_effect(self)
@@ -45,10 +45,10 @@ func run_away() -> void:
 	# Player died
 	if (not Globals.Player):
 		pass
-	
+
 	var enemy_x := position.x
 	var player_x := Globals.Player.position.x
-	
+
 	var move_direction := 0
 	if (not panicking):
 		move_direction = 1
@@ -56,12 +56,12 @@ func run_away() -> void:
 			move_direction = -1
 	else:
 		move_direction = panic_run_direction
-		
+
 	velocity.x = move_direction * current_speed
 	move_and_slide()
-	
+
 func attack(action_direction: Enums.ActionDirection):
-	print("Enemy attacking direction: " + 
+	print("Enemy attacking direction: " +
 		Enums.ActionDirection.keys()[action_direction])
 	# TODO: play an actual animation
 	match action_direction:
@@ -86,7 +86,7 @@ func block(action_direction: Enums.ActionDirection):
 				animation_player.play("shield_block_middle", -1, 2.0)
 			Enums.ActionDirection.DOWN:
 				animation_player.play("shield_block_down", -1, 2.0)
-	
+
 		is_blocking = true
 		_update_block_array(action_direction)
 		block_duration_timer.start()
@@ -97,7 +97,7 @@ func unblock(action_direction: Enums.ActionDirection):
 	is_blocking = false
 	cornered_block_timer.start()
 	last_block_direction = Enums.ActionDirection.NONE
-	
+
 	match action_direction:
 	# these play() functions are basically play_backwards(), but 4x as fast
 		Enums.ActionDirection.UP:
@@ -122,13 +122,13 @@ func attacked(player: Player, damage: int,
 		print("Enemy hit!")
 		current_health -= damage
 		print("Current enemy health: " + str(current_health))
-	
+
 	# Stop timers
 	cornered_block_timer.stop()
 	block_duration_timer.stop()
 	can_block = true
 	unblock(last_block_direction)
-	
+
 	# Start PanicRunTimer
 	panic_run_direction = _get_panic_direction()
 	run_away()
@@ -151,22 +151,22 @@ func _get_panic_direction() -> int:
 
 func _update_block_array(block_direction: Enums.ActionDirection):
 	var updated_blocking_array := [false, false, false]
-	if (block_direction != Enums.ActionDirection.NONE):	
+	if (block_direction != Enums.ActionDirection.NONE):
 		updated_blocking_array[int(block_direction) - 1] = true
-		
+
 	blocking = updated_blocking_array
 
 func _get_random_direction() -> Enums.ActionDirection:
 	var random_int = randi() % 2
 	var direction: Enums.ActionDirection = \
 		Enums.ActionDirection.values()[random_int + 1]
-	
+
 	return direction
 
 func _cornered() -> void:
 	# randomly blocks
 	var block_direction: Enums.ActionDirection = _get_random_direction()
-	
+
 	block(block_direction)
 
 func _on_enemy_area_area_entered(area: Area2D) -> void:

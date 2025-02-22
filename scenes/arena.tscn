@@ -1,10 +1,11 @@
-[gd_scene load_steps=8 format=3 uid="uid://cuaglt8wdr002"]
+[gd_scene load_steps=9 format=3 uid="uid://cuaglt8wdr002"]
 
 [ext_resource type="PackedScene" uid="uid://ch8wdr4iyy5qv" path="res://scenes/player.tscn" id="1_1kr8c"]
 [ext_resource type="Script" path="res://scripts/arena.gd" id="1_om0ey"]
 [ext_resource type="Texture2D" uid="uid://mtowhknhcget" path="res://assets/Arena.png" id="2_ppnlw"]
 [ext_resource type="PackedScene" uid="uid://d2keyc5bivfqk" path="res://scenes/enemy.tscn" id="2_yu7fl"]
 [ext_resource type="PackedScene" uid="uid://0tle71xwn5n8" path="res://ui/hud.tscn" id="4_251cf"]
+[ext_resource type="AudioStream" uid="uid://b4w8233icrskw" path="res://assets/sounds/Nothing_Can_Go_Wrong.wav" id="6_lobny"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_40apj"]
 
@@ -53,5 +54,8 @@ wait_time = 5.0
 [node name="Hud" parent="." instance=ExtResource("4_251cf")]
 offset_right = 1920.0
 offset_bottom = 1080.0
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("6_lobny")
 
 [connection signal="timeout" from="WinTimer" to="." method="_on_win_timer_timeout"]
