@@ -1,3 +1,18 @@
 extends Node
 
-var Player: Node2D = null
+var Player: Player = null
+var Enemy: Enemy = null
+
+var Victories := 0
+
+var PlayerStatusEffects := []
+var EnemyStatusEffects := []
+
+var VendorItems := [
+	HerculeanStrength.new(),
+	Excalibur.new(),
+	Quickfeet.new(),
+	TrollsHeart.new(),
+	FoodPoisoning.new(),
+	BigBadShield.new(),
+]

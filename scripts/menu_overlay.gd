@@ -12,19 +12,16 @@ func _process(delta: float) -> void:
 	pass
 
 func _on_main_menu_button_pressed() -> void:
-	print("Menu Overlay Menu Button Pressed!")
 	game_hud.paused = false
 	
 	get_tree().change_scene_to_file("res://ui/main_menu.tscn")
 
 func _on_options_button_pressed() -> void:
-	print("Menu Overlay Options Button Pressed!")
 	game_hud.paused = false
 	
 	get_tree().change_scene_to_file("res://ui/options.tscn")
 
 func _on_quit_button_pressed() -> void:
-	print("Menu Overlay Quit Button Pressed!")
 	get_tree().quit()
 
 func _on_continue_button_pressed() -> void:
