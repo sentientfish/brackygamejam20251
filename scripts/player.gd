@@ -153,10 +153,10 @@ func _update_block_array(block_direction: Enums.ActionDirection):
 	blocking = updated_blocking_array
 
 func _on_sword_area_up_body_entered(enemy: Enemy) -> void:
-	enemy.attacked(current_attack, Enums.ActionDirection.UP)
+	enemy.attacked(self, current_attack, Enums.ActionDirection.UP)
 
 func _on_sword_area_middle_body_entered(enemy: Enemy) -> void:
-	enemy.attacked(current_attack, Enums.ActionDirection.MIDDLE)
+	enemy.attacked(self, current_attack, Enums.ActionDirection.MIDDLE)
 
 func _on_sword_area_down_body_entered(enemy: Enemy) -> void:
-	enemy.attacked(current_attack, Enums.ActionDirection.DOWN)
+	enemy.attacked(self, current_attack, Enums.ActionDirection.DOWN)
