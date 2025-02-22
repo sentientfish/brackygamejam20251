@@ -127,11 +127,13 @@ func unblock(action_direction: Enums.ActionDirection):
 		Enums.ActionDirection.ALL:
 			animation_player.play("shield_block_middle", -1, -4.0, true)
 	
-func attacked(damage: int, action_direction: Enums.ActionDirection):
-	print("Player being attacked! damage " + str(damage) + ", direction: " +
-		Enums.ActionDirection.keys()[action_direction])
+func attacked(enemy: Enemy, damage: int, action_direction: Enums.ActionDirection):
+	print("Player being attacked! damage %s, direction: %s" %
+		[str(damage), Enums.ActionDirection.keys()[action_direction]])
 	if (blocking[int(action_direction) - 1]):
-		print("Player blocked the attack!")
+		print("Player blocked the attack! Retaliating with %d" % \
+			current_block_damage)
+		enemy.current_health -= current_block_damage
 	else:
 		print("Player got hit!")
 		current_health -= damage
