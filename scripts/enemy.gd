@@ -39,6 +39,7 @@ func _ready() -> void:
 		effect.trigger_effect(self)
 
 func _physics_process(delta: float) -> void:
+	_check_death()
 	var is_playing := animation_player.is_playing()
 	if (not is_playing and not is_blocking):
 		run_away()
@@ -135,15 +136,18 @@ func attacked(damage: int, action_direction: Enums.ActionDirection):
 		print("Enemy hit!")
 		current_health -= damage
 		print("Current enemy health: " + str(current_health))
-		if (current_health <= 0):
-			print("Enemy died!")
-			enemy_died.emit()
-			queue_free()
+			
 	
 	# Start PanicRunTimer
 	panic_run_direction = panic()
 	run_away()
 	panic_timer.start()
+
+func _check_death():
+	if (current_health <= 0):
+		print("Enemy died!")
+		enemy_died.emit()
+		queue_free()
 
 func _update_block_array(block_direction: Enums.ActionDirection):
 	var updated_blocking_array := [false, false, false]
