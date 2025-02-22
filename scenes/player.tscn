@@ -1,9 +1,10 @@
-[gd_scene load_steps=20 format=3 uid="uid://ch8wdr4iyy5qv"]
+[gd_scene load_steps=21 format=3 uid="uid://ch8wdr4iyy5qv"]
 
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_ndymx"]
 [ext_resource type="Texture2D" uid="uid://ci76kvedo1rh" path="res://assets/Electric-Shield_1.png" id="2_osfnp"]
 [ext_resource type="Texture2D" uid="uid://dixy1o1ebow21" path="res://assets/arm4.png" id="3_ru50b"]
 [ext_resource type="Texture2D" uid="uid://g0m7wo5kcem1" path="res://assets/Player.png" id="4_j8ytr"]
+[ext_resource type="AudioStream" uid="uid://duff40s86phro" path="res://assets/sounds/Swordhitv2.wav" id="5_c11o0"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_752ta"]
 size = Vector2(192, 75.3125)
@@ -62,7 +63,7 @@ tracks/2/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(146, -51)]
+"values": [Vector2(-4, 1)]
 }
 tracks/3/type = "value"
 tracks/3/imported = false
@@ -74,7 +75,7 @@ tracks/3/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(-117, 16)]
+"values": [Vector2(-114, 8)]
 }
 tracks/4/type = "value"
 tracks/4/imported = false
@@ -244,7 +245,7 @@ script = ExtResource("1_ndymx")
 [node name="Shield" type="Node2D" parent="."]
 
 [node name="ShieldSprite" type="Sprite2D" parent="Shield"]
-position = Vector2(-117, 16)
+position = Vector2(-114, 8)
 scale = Vector2(1.5, 1.5)
 texture = ExtResource("2_osfnp")
 
@@ -269,7 +270,7 @@ shape = SubResource("RectangleShape2D_qrqje")
 [node name="Sword" type="Node2D" parent="."]
 
 [node name="SwordSprite" type="Sprite2D" parent="Sword"]
-position = Vector2(146, -51)
+position = Vector2(-4, 1)
 scale = Vector2(1.5, 1.5)
 texture = ExtResource("3_ru50b")
 
@@ -305,6 +306,9 @@ shape = SubResource("RectangleShape2D_xox8q")
 libraries = {
 "": SubResource("AnimationLibrary_nr4rx")
 }
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("5_c11o0")
 
 [connection signal="body_entered" from="Sword/SwordAreaUp" to="." method="_on_sword_area_up_body_entered"]
 [connection signal="body_entered" from="Sword/SwordAreaMiddle" to="." method="_on_sword_area_middle_body_entered"]

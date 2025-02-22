@@ -18,14 +18,14 @@ func _ready() -> void:
 	vendor_minigame = get_node("VendorMinigame")
 	rolled_item_label = get_node("RolledItemLabel")
 	rolled_item_timer = get_node("RolledItemTimer")
-	
+
 	var item_index := 1
 	for item in items:
 		var item_node := get_node("Item%d" % item_index)
 		item_index += 1
-		
+
 		item_node.texture = item.icon
-	
+
 	vendor_minigame.connect("dice_rolled", _on_dice_rolled)
 	rolled_item_label.hide()
 
@@ -38,12 +38,12 @@ func _generate_vendor_items() -> void:
 		# No more available items, just leave
 		if (items.size() == Globals.VendorItems.size()):
 			break
-			
+
 		var valid := false
 		while (not valid):
 			var random_item_index := randi() % Globals.VendorItems.size()
 			var vendor_item: Effect = Globals.VendorItems[random_item_index]
-			
+
 			if vendor_item in items:
 				continue
 			else:
@@ -62,12 +62,12 @@ func _on_dice_rolled(dice_sum_value):
 	else:
 		rolled_item_text = ("%s%s" % [rolled_item.effect_name,
 			rolled_item_unavailable_string])
-	
+
 	rolled_item_timer.start()
 	rolled_item_label.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
 	rolled_item_label.text = rolled_item_text
 	rolled_item_label.show()
-	
+
 	current_item_index = rolled_item_index
 
 func _on_continue_button_pressed() -> void:

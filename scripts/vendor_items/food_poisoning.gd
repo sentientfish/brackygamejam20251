@@ -11,7 +11,7 @@ func _ready() -> void:
 func trigger_effect(character: CharacterBody2D) -> void:
 	for i in range(0, owned_stacks):
 		poison_damage += 50
-		
+
 	while (not combat_finished and character.current_health > 0):
 		print("Poison triggered")
 		_apply_damage_overtime(character)
@@ -29,7 +29,7 @@ func _on_player_died() -> void:
 func _init():
 	var image = Image.load_from_file("res://assets/sprites/vendor_items/FoodPoisoning.png")
 	var texture = ImageTexture.create_from_image(image)
-	
+
 	icon = texture
 	max_stacks = 3
 	effect_name = "Food Poisoning"
