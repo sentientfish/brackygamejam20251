@@ -1,6 +1,6 @@
 class_name BigBadShield extends Effect
 
-func trigger_effect(character: CharacterBody2D):
+func trigger_effect(character: CharacterBody2D) -> void:
 	character.block_all = true
 
 func _init():

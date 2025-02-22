@@ -11,11 +11,8 @@ script = ExtResource("1_n2wjs")
 [node name="TextureRect" type="TextureRect" parent="."]
 offset_right = 40.0
 offset_bottom = 40.0
+mouse_filter = 2
 texture = ExtResource("2_vb25c")
-
-[node name="Hud" parent="." instance=ExtResource("2_ogy3s")]
-offset_right = 1920.0
-offset_bottom = 1080.0
 
 [node name="ContinueButton" type="Button" parent="."]
 offset_left = 1586.0
@@ -59,6 +56,10 @@ theme_override_font_sizes/font_size = 25
 
 [node name="RolledItemTimer" type="Timer" parent="."]
 wait_time = 3.0
+
+[node name="Hud" parent="." instance=ExtResource("2_ogy3s")]
+offset_right = 1920.0
+offset_bottom = 1080.0
 
 [connection signal="pressed" from="ContinueButton" to="." method="_on_continue_button_pressed"]
 [connection signal="timeout" from="RolledItemTimer" to="." method="_on_rolled_item_timer_timeout"]

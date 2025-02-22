@@ -1,8 +1,5 @@
 class_name Enemy extends CharacterBody2D
 
-# Enemy Signals
-signal enemy_died
-
 # Enemy Base Stats
 @export var stat_health: float = 300.0
 @export var stat_attack: float = 50.0
@@ -44,7 +41,7 @@ func _physics_process(delta: float) -> void:
 	if (not is_playing and not is_blocking):
 		run_away()
 
-func run_away():
+func run_away() -> void:
 	# Player died
 	if (not Globals.Player):
 		pass
@@ -110,12 +107,14 @@ func unblock(action_direction: Enums.ActionDirection):
 		Enums.ActionDirection.DOWN:
 			animation_player.play("shield_block_down", -1, -4.0, true)
 
-func attacked(player: Player, damage: int, action_direction: Enums.ActionDirection):
+func attacked(player: Player, damage: int,
+		action_direction: Enums.ActionDirection):
 	panicking = true
 	print("Enemy being attacked! damage " + str(damage) + ", direction: " +
 		Enums.ActionDirection.keys()[action_direction])
 	if (blocking[int(action_direction) - 1]):
 		# enemy blocked, attack back
+		print("Enemy blocked the attack!")
 		player.current_health -= current_block_damage
 		var attack_direction: Enums.ActionDirection = _get_random_direction()
 		attack(attack_direction)
@@ -135,10 +134,10 @@ func attacked(player: Player, damage: int, action_direction: Enums.ActionDirecti
 	run_away()
 	panic_timer.start()
 
-func _check_death():
+func _check_death() -> void:
 	if (current_health <= 0):
 		print("Enemy died!")
-		enemy_died.emit()
+		Globals.EnemyDied.emit()
 		queue_free()
 
 func _get_panic_direction() -> int:
@@ -157,14 +156,14 @@ func _update_block_array(block_direction: Enums.ActionDirection):
 		
 	blocking = updated_blocking_array
 
-func _get_random_direction():
+func _get_random_direction() -> Enums.ActionDirection:
 	var random_int = randi() % 2
 	var direction: Enums.ActionDirection = \
 		Enums.ActionDirection.values()[random_int + 1]
 	
 	return direction
 
-func _cornered():
+func _cornered() -> void:
 	# randomly blocks
 	var block_direction: Enums.ActionDirection = _get_random_direction()
 	

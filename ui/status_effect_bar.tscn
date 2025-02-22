@@ -1,0 +1,33 @@
+[gd_scene load_steps=2 format=3 uid="uid://bfy4tpkrqpui3"]
+
+[ext_resource type="Script" path="res://scripts/status_effect_bar.gd" id="1_af247"]
+
+[node name="StatusEffectBar" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("1_af247")
+
+[node name="PlayerStatusEffectBar" type="VBoxContainer" parent="."]
+custom_minimum_size = Vector2(780, 300)
+layout_mode = 0
+offset_left = 1140.0
+offset_top = 630.0
+offset_right = 3504.0
+offset_bottom = 1539.0
+scale = Vector2(0.33, 0.33)
+mouse_filter = 2
+alignment = 2
+
+[node name="EnemyStatusEffectBar" type="VBoxContainer" parent="."]
+custom_minimum_size = Vector2(780, 300)
+layout_mode = 0
+offset_top = 150.0
+offset_right = 2364.0
+offset_bottom = 1059.0
+scale = Vector2(0.33, 0.33)
+mouse_filter = 2

@@ -1,6 +1,6 @@
 class_name ElectricShield extends Effect
 
-func trigger_effect(character: CharacterBody2D):
+func trigger_effect(character: CharacterBody2D) -> void:
 	for i in range(0, owned_stacks):
 		character.block_damage += 50
 
