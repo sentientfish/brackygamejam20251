@@ -4,7 +4,7 @@ class_name Enemy extends CharacterBody2D
 @export var stat_health: float = 300.0
 @export var stat_attack: float = 50.0
 @export var stat_block_damage: float = 0.0
-@export var stat_speed: float = 400.0
+@export var stat_speed: float = 300.0
 
 # Enemy Current Stats
 @export var current_health: float = stat_health

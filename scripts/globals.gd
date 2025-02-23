@@ -4,10 +4,12 @@ signal CombatStarted
 signal EnemyDied
 signal PlayerDied
 
+var Muted := false
+
 var Player: Player = null
 var Enemy: Enemy = null
 
-var Victories := 0
+var Victories := 4
 
 var PlayerStatusEffects := []
 var EnemyStatusEffects := []

@@ -1,10 +1,9 @@
-[gd_scene load_steps=22 format=3 uid="uid://d2keyc5bivfqk"]
+[gd_scene load_steps=21 format=3 uid="uid://d2keyc5bivfqk"]
 
 [ext_resource type="Script" path="res://scripts/enemy.gd" id="1_kk3if"]
 [ext_resource type="Texture2D" uid="uid://dn4rt3wr7wugp" path="res://assets/EnemyShield.png" id="3_73nnx"]
 [ext_resource type="Texture2D" uid="uid://bsdfujx6bqklb" path="res://assets/Enemy.png" id="3_i5708"]
 [ext_resource type="Texture2D" uid="uid://i3325gxgme4k" path="res://assets/Enemy-Arm-1.png" id="4_71bxb"]
-[ext_resource type="AudioStream" uid="uid://b66aryl6ga18j" path="res://assets/sounds/enemydeathsoundv2.wav" id="5_6x5tt"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_uyehj"]
 size = Vector2(192, 75.3125)
@@ -328,9 +327,6 @@ wait_time = 3.0
 
 [node name="BlockDurationTimer" type="Timer" parent="."]
 wait_time = 1.5
-
-[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("5_6x5tt")
 
 [connection signal="body_entered" from="Sword/SwordAreaUp" to="." method="_on_sword_area_up_body_entered"]
 [connection signal="body_entered" from="Sword/SwordAreaMiddle" to="." method="_on_sword_area_middle_body_entered"]

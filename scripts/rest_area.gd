@@ -11,6 +11,7 @@ var items := []
 var vendor_minigame: Node2D = null
 var rolled_item_label: Label = null
 var rolled_item_timer: Timer = null
+var power_up_sfx_player: AudioStreamPlayer2D = null
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -18,6 +19,7 @@ func _ready() -> void:
 	vendor_minigame = get_node("VendorMinigame")
 	rolled_item_label = get_node("RolledItemLabel")
 	rolled_item_timer = get_node("RolledItemTimer")
+	power_up_sfx_player = get_node("PowerUpSFXPlayer")
 
 	var item_index := 1
 	for item in items:
@@ -63,6 +65,7 @@ func _on_dice_rolled(dice_sum_value):
 		rolled_item_text = ("%s%s" % [rolled_item.effect_name,
 			rolled_item_unavailable_string])
 
+	power_up_sfx_player.play()
 	rolled_item_timer.start()
 	rolled_item_label.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
 	rolled_item_label.text = rolled_item_text
