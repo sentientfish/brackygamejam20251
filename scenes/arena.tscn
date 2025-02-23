@@ -64,12 +64,4 @@ bus = &"SFX"
 stream = ExtResource("7_7db37")
 bus = &"SFX"
 
-[node name="TempKillPlayerButton" type="Button" parent="."]
-offset_left = 189.0
-offset_top = 472.0
-offset_right = 418.0
-offset_bottom = 610.0
-text = "kill player"
-
 [connection signal="timeout" from="WinTimer" to="." method="_on_win_timer_timeout"]
-[connection signal="pressed" from="TempKillPlayerButton" to="." method="_on_temp_kill_player_button_pressed"]

@@ -47,7 +47,3 @@ func _on_player_died() -> void:
 	player_death_sfx_player.play()
 	await player_death_sfx_player.finished
 	get_tree().change_scene_to_file("res://ui/defeat.tscn")
-
-# REMOVE THIS BEFORE MERGING
-func _on_temp_kill_player_button_pressed() -> void:
-	Globals.Enemy.current_health = -100
