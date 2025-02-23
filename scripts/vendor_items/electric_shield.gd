@@ -5,9 +5,8 @@ func trigger_effect(character: CharacterBody2D) -> void:
 		character.block_damage += 50
 
 func _init():
-	var image = Image.load_from_file("res://assets/sprites/vendor_items/ElectricShield.png")
-	var texture = ImageTexture.create_from_image(image)
-	
+	var texture = load("res://assets/sprites/vendor_items/ElectricShield.png")
+
 	icon = texture
 	max_stacks = 3
 	effect_name = "Electric Shield"

@@ -31,7 +31,7 @@ func _ready() -> void:
 	# Trigger all effects on player
 	for effect in Globals.PlayerStatusEffects:
 		effect.trigger_effect(self)
-		
+
 	if (parrot_obtained):
 		parrot.show()
 		parrot.start_parrot()

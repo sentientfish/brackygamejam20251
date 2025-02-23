@@ -9,7 +9,7 @@ func _ready() -> void:
 	main_menu_bgm_player = get_node("MainMenuBGMPlayer")
 	main_menu_hover_sfx_player = get_node("MainMenuHoverSFXPlayer")
 	main_menu_click_sfx_player = get_node("MainMenuClickSFXPlayer")
-	
+
 	Globals.PlayerStatusEffects = []
 	Globals.EnemyStatusEffects = []
 

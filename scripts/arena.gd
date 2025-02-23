@@ -13,7 +13,7 @@ func _ready() -> void:
 	victory_label = get_node("VictoryLabel")
 	enemy_death_sfx_player = get_node("EnemyDeathSFXPlayer")
 	player_death_sfx_player = get_node("PlayerDeathSFXPlayer")
-	
+
 	victory_label.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
 	victory_label.hide()
 

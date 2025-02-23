@@ -10,7 +10,7 @@ var ParrotObtained := false
 var Player: Player = null
 var Enemy: Enemy = null
 
-var Victories := 4
+var Victories := 0
 
 var PlayerStatusEffects := []
 var EnemyStatusEffects := []

@@ -17,7 +17,7 @@ func remove_from_store() -> void:
 			self_index += 1
 		else:
 			break
-	
+
 	Globals.VendorItems.remove_at(self_index)
 	available = false
 
@@ -27,13 +27,13 @@ func append_effect() -> void:
 		target_status_effect_list = Globals.PlayerStatusEffects
 	else:
 		target_status_effect_list = Globals.EnemyStatusEffects
-	
+
 	if (self in target_status_effect_list and owned_stacks < max_stacks):
 		owned_stacks += 1
 	else:
 		target_status_effect_list.append(self)
 		owned_stacks += 1
-	
+
 	if (owned_stacks == max_stacks):
 		remove_from_store()
 
