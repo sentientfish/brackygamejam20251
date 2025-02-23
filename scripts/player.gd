@@ -73,7 +73,6 @@ func process_player_input(delta: float) -> void:
 func attack(action_direction: Enums.ActionDirection):
 	print("Player attacking direction: " +
 		Enums.ActionDirection.keys()[action_direction])
-	# TODO: play an actual animation
 	match action_direction:
 		Enums.ActionDirection.UP:
 			animation_player.play("sword_attack_up")
