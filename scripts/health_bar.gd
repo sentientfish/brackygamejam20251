@@ -19,11 +19,11 @@ func _on_combat_started() -> void:
 	player_health_progress_bar.max_value = Globals.Player.stat_health
 	player_health_progress_bar.value = Globals.Player.current_health
 	player_health_progress_bar.show()
-	
+
 	enemy_health_progress_bar.max_value = Globals.Enemy.stat_health
 	enemy_health_progress_bar.value = Globals.Enemy.current_health
 	enemy_health_progress_bar.show()
-	
+
 	start_display = true
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
