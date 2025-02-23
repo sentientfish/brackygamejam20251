@@ -21,7 +21,6 @@ var panic_run_direction: int = 0
 var panic_timer: Timer = null
 var cornered_block_timer: Timer = null # how long before enemy can block again
 var block_duration_timer: Timer = null # enemy block duration
-var enemy_death_sfx_player: AudioStreamPlayer2D = null
 var last_block_direction: Enums.ActionDirection = Enums.ActionDirection.NONE
 
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
@@ -31,7 +30,6 @@ func _ready() -> void:
 	panic_timer = get_node("PanicRunTimer")
 	cornered_block_timer = get_node("CorneredBlockTimer")
 	block_duration_timer = get_node("BlockDurationTimer")
-	enemy_death_sfx_player = get_node("EnemyDeathSFXPlayer")
 
 	# Triggers all effects on enemy
 	for effect in Globals.EnemyStatusEffects:
@@ -139,8 +137,6 @@ func attacked(player: Player, damage: int,
 func _check_death() -> void:
 	if (current_health <= 0):
 		print("Enemy died!")
-		enemy_death_sfx_player.play()
-		await enemy_death_sfx_player.finished
 		Globals.EnemyDied.emit()
 		queue_free()
 

@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://2b8g8dmcu8th"]
+[gd_scene load_steps=6 format=3 uid="uid://2b8g8dmcu8th"]
 
 [ext_resource type="Script" path="res://scripts/rest_area.gd" id="1_n2wjs"]
 [ext_resource type="PackedScene" uid="uid://0tle71xwn5n8" path="res://ui/hud.tscn" id="2_ogy3s"]
 [ext_resource type="Texture2D" uid="uid://2yyp0cfq6xa4" path="res://assets/Vendor-Minigame.png" id="2_vb25c"]
+[ext_resource type="AudioStream" uid="uid://d245uxee2foi4" path="res://assets/sounds/powerUpv1.wav" id="5_2hqym"]
 [ext_resource type="PackedScene" uid="uid://bau575m3jy3jt" path="res://scenes/vendor_minigame.tscn" id="5_l703v"]
 
 [node name="RestArea" type="Node2D"]
@@ -53,6 +54,10 @@ wait_time = 3.0
 [node name="Hud" parent="." instance=ExtResource("2_ogy3s")]
 offset_right = 1920.0
 offset_bottom = 1080.0
+
+[node name="PowerUpSFXPlayer" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("5_2hqym")
+bus = &"SFX"
 
 [connection signal="pressed" from="ContinueButton" to="." method="_on_continue_button_pressed"]
 [connection signal="timeout" from="RolledItemTimer" to="." method="_on_rolled_item_timer_timeout"]

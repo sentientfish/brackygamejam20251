@@ -149,7 +149,7 @@ func _check_death() -> void:
 		print("Player died!")
 		Globals.Player = null
 		queue_free()
-		get_tree().change_scene_to_file("res://ui/defeat.tscn")
+		Globals.PlayerDied.emit()
 
 func _update_block_array(block_direction: Enums.ActionDirection):
 	var updated_blocking_array := [false, false, false]

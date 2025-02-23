@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://100nud0mj0ma"]
+[gd_scene load_steps=3 format=3 uid="uid://100nud0mj0ma"]
 
 [ext_resource type="Script" path="res://scripts/defeat.gd" id="1_aa27e"]
+[ext_resource type="AudioStream" uid="uid://dm6een34as1co" path="res://assets/sounds/GameOver.wav" id="2_infbp"]
 
 [node name="Defeat" type="Control"]
 process_mode = 3
@@ -53,5 +54,10 @@ offset_bottom = 241.0
 grow_horizontal = 2
 grow_vertical = 2
 text = "Return to Main Menu"
+
+[node name="DefeatBGMPlayer" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("2_infbp")
+autoplay = true
+bus = &"BGM"
 
 [connection signal="pressed" from="ReturnButton" to="." method="_on_return_button_pressed"]

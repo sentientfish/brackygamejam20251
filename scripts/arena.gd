@@ -2,7 +2,8 @@ extends Node2D
 
 var win_timer: Timer = null
 var victory_label: Label = null
-var arena_bgm_player: AudioStreamPlayer2D = null
+var enemy_death_sfx_player: AudioStreamPlayer2D = null
+var player_death_sfx_player : AudioStreamPlayer2D = null
 
 var victory_string = "Victory!!!\nReturning to Rest Area in\n"
 
@@ -10,14 +11,14 @@ var victory_string = "Victory!!!\nReturning to Rest Area in\n"
 func _ready() -> void:
 	win_timer = get_node("WinTimer")
 	victory_label = get_node("VictoryLabel")
-	arena_bgm_player = get_node("ArenaBGMPlayer")
+	enemy_death_sfx_player = get_node("EnemyDeathSFXPlayer")
+	player_death_sfx_player = get_node("PlayerDeathSFXPlayer")
 	
 	victory_label.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
 	victory_label.hide()
 
-	arena_bgm_player.play()
-
 	Globals.connect("EnemyDied", _on_enemy_died)
+	Globals.connect("PlayerDied", _on_player_died)
 	Globals.CombatStarted.emit()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -38,5 +39,15 @@ func _on_win_timer_timeout() -> void:
 func _on_enemy_died() -> void:
 	# We win, start win timer before moving to new area
 	# TODO: Play a battle victory music
+	enemy_death_sfx_player.play()
 	victory_label.show()
 	win_timer.start()
+
+func _on_player_died() -> void:
+	player_death_sfx_player.play()
+	await player_death_sfx_player.finished
+	get_tree().change_scene_to_file("res://ui/defeat.tscn")
+
+# REMOVE THIS BEFORE MERGING
+func _on_temp_kill_player_button_pressed() -> void:
+	Globals.Enemy.current_health = -100

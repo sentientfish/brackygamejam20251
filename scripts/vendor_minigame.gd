@@ -61,6 +61,7 @@ func _on_dice_roll_button_pressed() -> void:
 	roll_dice(dice_1)
 	roll_dice(dice_2)
 	remaining_dice_rolls -= 1
+	await dice_roll_sfx_player.finished
 
 	var dice_sum_value: int = dice_1.get_meta("value") + dice_2.get_meta("value")
 
