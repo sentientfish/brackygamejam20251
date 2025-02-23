@@ -4,6 +4,7 @@ var dice_1: Node2D = null
 var dice_2: Node2D = null
 var dice_roll_exhausted_label: Label = null
 var dice_roll_sfx_player: AudioStreamPlayer2D = null
+var dice_roll_button: Button = null
 
 var max_dice_rolls := 3
 var remaining_dice_rolls := max_dice_rolls
@@ -24,6 +25,7 @@ func _ready() -> void:
 	dice_1 = get_node("Panel/Dice1")
 	dice_2 = get_node("Panel/Dice2")
 	dice_roll_sfx_player = get_node("DiceRollSFXPlayer")
+	dice_roll_button = get_node("Panel/DiceRollButton")
 	dice_1.position.x = -200
 	dice_2.position.x = -200
 	dice_roll_exhausted_label = get_node("Panel/DiceRollExhaustedLabel")
@@ -49,6 +51,7 @@ func roll_dice(dice: Node2D):
 	dice.set_meta("value", (dice_roll + 1))
 
 func _on_dice_roll_button_pressed() -> void:
+	dice_roll_button.disabled = true
 	dice_1.position.x = -200
 	dice_2.position.x = -200
 	var tween = create_tween()
@@ -69,6 +72,5 @@ func _on_dice_roll_button_pressed() -> void:
 
 	if (remaining_dice_rolls == 0):
 		dice_roll_exhausted_label.show()
-
-		var dice_roll_button := get_node("Panel/DiceRollButton")
-		dice_roll_button.disabled = true
+	else:
+		dice_roll_button.disabled = false

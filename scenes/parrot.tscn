@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://b5wrk0yawkn2x"]
+
+[ext_resource type="Script" path="res://scripts/parrot.gd" id="1_gyg6f"]
+[ext_resource type="Texture2D" uid="uid://bj6s46262ga2c" path="res://assets/sprites/parrot.png" id="2_auhu5"]
+
+[node name="Parrot" type="Node2D"]
+script = ExtResource("1_gyg6f")
+
+[node name="ParrotSFXPlayer" type="AudioStreamPlayer2D" parent="."]
+bus = &"SFX"
+
+[node name="ParrotSFXTimer" type="Timer" parent="."]
+
+[node name="ParrotSprite" type="Sprite2D" parent="."]
+texture = ExtResource("2_auhu5")
+
+[connection signal="timeout" from="ParrotSFXTimer" to="." method="_on_parrot_sfx_timer_timeout"]

@@ -1,10 +1,11 @@
-[gd_scene load_steps=21 format=3 uid="uid://ch8wdr4iyy5qv"]
+[gd_scene load_steps=22 format=3 uid="uid://ch8wdr4iyy5qv"]
 
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_ndymx"]
 [ext_resource type="Texture2D" uid="uid://ci76kvedo1rh" path="res://assets/Electric-Shield_1.png" id="2_osfnp"]
 [ext_resource type="Texture2D" uid="uid://dixy1o1ebow21" path="res://assets/arm4.png" id="3_ru50b"]
 [ext_resource type="Texture2D" uid="uid://g0m7wo5kcem1" path="res://assets/Player.png" id="4_j8ytr"]
 [ext_resource type="AudioStream" uid="uid://duff40s86phro" path="res://assets/sounds/Swordhitv2.wav" id="5_c11o0"]
+[ext_resource type="PackedScene" uid="uid://b5wrk0yawkn2x" path="res://scenes/parrot.tscn" id="6_oyyfp"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_752ta"]
 size = Vector2(192, 75.3125)
@@ -250,18 +251,21 @@ scale = Vector2(1.5, 1.5)
 texture = ExtResource("2_osfnp")
 
 [node name="ShieldAreaUp" type="Area2D" parent="Shield"]
+visible = false
 
 [node name="ShieldCollisionUp" type="CollisionShape2D" parent="Shield/ShieldAreaUp"]
 position = Vector2(0, -100)
 shape = SubResource("RectangleShape2D_752ta")
 
 [node name="ShieldAreaMiddle" type="Area2D" parent="Shield"]
+visible = false
 
 [node name="ShieldCollisionMiddle" type="CollisionShape2D" parent="Shield/ShieldAreaMiddle"]
 position = Vector2(0, -15)
 shape = SubResource("RectangleShape2D_yx7bf")
 
 [node name="ShieldAreaDown" type="Area2D" parent="Shield"]
+visible = false
 
 [node name="ShieldCollisionDown" type="CollisionShape2D" parent="Shield/ShieldAreaDown"]
 position = Vector2(0, 72)
@@ -275,6 +279,7 @@ scale = Vector2(1.5, 1.5)
 texture = ExtResource("3_ru50b")
 
 [node name="SwordAreaUp" type="Area2D" parent="Sword"]
+visible = false
 monitoring = false
 
 [node name="SwordCollisionUp" type="CollisionShape2D" parent="Sword/SwordAreaUp"]
@@ -282,6 +287,7 @@ position = Vector2(0, -345)
 shape = SubResource("RectangleShape2D_xdwk7")
 
 [node name="SwordAreaMiddle" type="Area2D" parent="Sword"]
+visible = false
 monitoring = false
 
 [node name="SwordCollisionMiddle" type="CollisionShape2D" parent="Sword/SwordAreaMiddle"]
@@ -289,6 +295,7 @@ position = Vector2(0, -265)
 shape = SubResource("RectangleShape2D_2hsp2")
 
 [node name="SwordAreaDown" type="Area2D" parent="Sword"]
+visible = false
 monitoring = false
 
 [node name="SwordCollisionDown" type="CollisionShape2D" parent="Sword/SwordAreaDown"]
@@ -300,6 +307,7 @@ scale = Vector2(1.5, 1.5)
 texture = ExtResource("4_j8ytr")
 
 [node name="PlayerCollision" type="CollisionShape2D" parent="."]
+visible = false
 shape = SubResource("RectangleShape2D_xox8q")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
@@ -310,6 +318,9 @@ libraries = {
 [node name="PlayerAttackedSFXPlayer" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("5_c11o0")
 bus = &"SFX"
+
+[node name="Parrot" parent="." instance=ExtResource("6_oyyfp")]
+position = Vector2(-7, -16)
 
 [connection signal="body_entered" from="Sword/SwordAreaUp" to="." method="_on_sword_area_up_body_entered"]
 [connection signal="body_entered" from="Sword/SwordAreaMiddle" to="." method="_on_sword_area_middle_body_entered"]

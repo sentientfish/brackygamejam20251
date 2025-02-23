@@ -5,6 +5,7 @@ signal EnemyDied
 signal PlayerDied
 
 var Muted := false
+var ParrotObtained := false
 
 var Player: Player = null
 var Enemy: Enemy = null
@@ -21,4 +22,5 @@ var VendorItems := [
 	TrollsHeart.new(),
 	FoodPoisoning.new(),
 	BigBadShield.new(),
+	ShoulderParrot.new(),
 ]
