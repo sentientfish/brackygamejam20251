@@ -5,6 +5,7 @@ signal EnemyDied
 signal PlayerDied
 
 var Muted := false
+var ParrotObtained := false
 
 var Player: Player = null
 var Enemy: Enemy = null

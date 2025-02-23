@@ -18,19 +18,25 @@ var is_blocking: bool = false
 var block_all: bool = false
 var current_block_direction: Enums.ActionDirection = Enums.ActionDirection.NONE
 var player_attacked_sfx_player: AudioStreamPlayer2D = null
+var parrot : Parrot = null
 
 @onready var animation_player : AnimationPlayer = $AnimationPlayer
 
 func _ready() -> void:
 	Globals.Player = self
 	player_attacked_sfx_player = get_node("PlayerAttackedSFXPlayer")
+	parrot = get_node("Parrot")
 
 	# Trigger all effects on player
 	for effect in Globals.PlayerStatusEffects:
-		print("Triggering effect: " + effect.effect_name)
 		effect.trigger_effect(self)
-
-	print("current attack: " + str(current_attack))
+		
+	if (Globals.ParrotObtained):
+		parrot.show()
+		var parrot_sfx_timer: Timer = parrot.get_node("ParrotSFXTimer")
+		parrot_sfx_timer.start()
+	else:
+		parrot.hide()
 
 func _physics_process(delta: float) -> void:
 	process_player_input(delta)
