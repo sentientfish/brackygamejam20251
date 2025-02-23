@@ -4,7 +4,7 @@ class_name Player extends CharacterBody2D
 @export var stat_health: float = 300.0
 @export var stat_attack: float = 50.0
 @export var stat_block_damage: float = 0.0
-@export var stat_speed: float = 300.0
+@export var stat_speed: float = 450.0
 
 # Player Current Stats
 @export var current_health: float = stat_health
@@ -17,11 +17,13 @@ var blocking: Array = [false, false, false]
 var is_blocking: bool = false
 var block_all: bool = false
 var current_block_direction: Enums.ActionDirection = Enums.ActionDirection.NONE
+var player_attacked_sfx_player: AudioStreamPlayer2D = null
 
 @onready var animation_player : AnimationPlayer = $AnimationPlayer
 
 func _ready() -> void:
 	Globals.Player = self
+	player_attacked_sfx_player = get_node("PlayerAttackedSFXPlayer")
 
 	# Trigger all effects on player
 	for effect in Globals.PlayerStatusEffects:
@@ -137,6 +139,7 @@ func attacked(enemy: Enemy, damage: int,
 			current_block_damage)
 		enemy.current_health -= current_block_damage
 	else:
+		player_attacked_sfx_player.play()
 		print("Player got hit!")
 		current_health -= damage
 		print("Current player health: " + str(current_health))

@@ -13,7 +13,7 @@ grow_vertical = 2
 mouse_filter = 2
 script = ExtResource("1_l6uu8")
 
-[node name="MarginContainer" type="MarginContainer" parent="."]
+[node name="OptionsMarginContainer" type="MarginContainer" parent="."]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -27,66 +27,78 @@ offset_bottom = 450.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+[node name="OptionsVerticalContainer" type="VBoxContainer" parent="OptionsMarginContainer"]
 layout_mode = 2
 
-[node name="BGMVolumeContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
+[node name="BGMVolumeContainer" type="HBoxContainer" parent="OptionsMarginContainer/OptionsVerticalContainer"]
 layout_mode = 2
 
-[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/BGMVolumeContainer"]
+[node name="BGMVolumeLabel" type="Label" parent="OptionsMarginContainer/OptionsVerticalContainer/BGMVolumeContainer"]
 layout_mode = 2
 size_flags_horizontal = 0
 text = "BGM Volume"
 
-[node name="HSlider" type="HSlider" parent="MarginContainer/VBoxContainer/BGMVolumeContainer"]
+[node name="BGMVolumeSlider" type="HSlider" parent="OptionsMarginContainer/OptionsVerticalContainer/BGMVolumeContainer"]
 custom_minimum_size = Vector2(900, 0)
 layout_mode = 2
 size_flags_horizontal = 8
 size_flags_vertical = 4
+min_value = -50.0
+max_value = 15.0
+rounded = true
 
-[node name="SFXVolumeContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
+[node name="SFXVolumeContainer" type="HBoxContainer" parent="OptionsMarginContainer/OptionsVerticalContainer"]
 layout_mode = 2
 
-[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/SFXVolumeContainer"]
+[node name="SFXVolumeLabel" type="Label" parent="OptionsMarginContainer/OptionsVerticalContainer/SFXVolumeContainer"]
 layout_mode = 2
 size_flags_horizontal = 0
 text = "SFX Volume"
 
-[node name="HSlider" type="HSlider" parent="MarginContainer/VBoxContainer/SFXVolumeContainer"]
+[node name="SFXVolumeSlider" type="HSlider" parent="OptionsMarginContainer/OptionsVerticalContainer/SFXVolumeContainer"]
 custom_minimum_size = Vector2(900, 0)
 layout_mode = 2
 size_flags_horizontal = 8
 size_flags_vertical = 4
+min_value = -50.0
+max_value = 15.0
+rounded = true
 
-[node name="MasterVolumeContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
+[node name="MasterVolumeContainer" type="HBoxContainer" parent="OptionsMarginContainer/OptionsVerticalContainer"]
 layout_mode = 2
 
-[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/MasterVolumeContainer"]
+[node name="MasterVolumeLabel" type="Label" parent="OptionsMarginContainer/OptionsVerticalContainer/MasterVolumeContainer"]
 layout_mode = 2
 size_flags_horizontal = 0
 text = "Master Volume"
 
-[node name="HSlider" type="HSlider" parent="MarginContainer/VBoxContainer/MasterVolumeContainer"]
+[node name="MasterVolumeSlider" type="HSlider" parent="OptionsMarginContainer/OptionsVerticalContainer/MasterVolumeContainer"]
 custom_minimum_size = Vector2(900, 0)
 layout_mode = 2
 size_flags_horizontal = 8
 size_flags_vertical = 4
+min_value = -50.0
+max_value = 15.0
+rounded = true
 
-[node name="MuteButtonContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
+[node name="MuteButtonContainer" type="HBoxContainer" parent="OptionsMarginContainer/OptionsVerticalContainer"]
 layout_mode = 2
 
-[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/MuteButtonContainer"]
+[node name="MuteButtonLabel" type="Label" parent="OptionsMarginContainer/OptionsVerticalContainer/MuteButtonContainer"]
 layout_mode = 2
 size_flags_horizontal = 0
 text = "Mute"
 
-[node name="MuteCheckBox" type="CheckBox" parent="MarginContainer/VBoxContainer/MuteButtonContainer"]
+[node name="MuteCheckBox" type="CheckBox" parent="OptionsMarginContainer/OptionsVerticalContainer/MuteButtonContainer"]
 layout_mode = 2
 
-[node name="OptionsBackButton" type="Button" parent="MarginContainer/VBoxContainer"]
+[node name="OptionsBackButton" type="Button" parent="OptionsMarginContainer/OptionsVerticalContainer"]
 layout_mode = 2
 size_flags_horizontal = 0
 text = "Back"
 
-[connection signal="toggled" from="MarginContainer/VBoxContainer/MuteButtonContainer/MuteCheckBox" to="." method="_on_mute_check_box_toggled"]
-[connection signal="pressed" from="MarginContainer/VBoxContainer/OptionsBackButton" to="." method="_on_options_back_button_pressed"]
+[connection signal="value_changed" from="OptionsMarginContainer/OptionsVerticalContainer/BGMVolumeContainer/BGMVolumeSlider" to="." method="_on_bgm_volume_slider_value_changed"]
+[connection signal="value_changed" from="OptionsMarginContainer/OptionsVerticalContainer/SFXVolumeContainer/SFXVolumeSlider" to="." method="_on_sfx_volume_slider_value_changed"]
+[connection signal="value_changed" from="OptionsMarginContainer/OptionsVerticalContainer/MasterVolumeContainer/MasterVolumeSlider" to="." method="_on_master_volume_slider_value_changed"]
+[connection signal="toggled" from="OptionsMarginContainer/OptionsVerticalContainer/MuteButtonContainer/MuteCheckBox" to="." method="_on_mute_check_box_toggled"]
+[connection signal="pressed" from="OptionsMarginContainer/OptionsVerticalContainer/OptionsBackButton" to="." method="_on_options_back_button_pressed"]

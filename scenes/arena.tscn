@@ -55,7 +55,8 @@ wait_time = 5.0
 offset_right = 1920.0
 offset_bottom = 1080.0
 
-[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+[node name="ArenaBGMPlayer" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("6_lobny")
+bus = &"BGM"
 
 [connection signal="timeout" from="WinTimer" to="." method="_on_win_timer_timeout"]
