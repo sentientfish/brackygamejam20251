@@ -22,13 +22,13 @@ var _dice_enum_map = {
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	dice_1 = get_node("Panel/Dice1")
-	dice_2 = get_node("Panel/Dice2")
+	dice_1 = get_node("VendorMinigameTexture/Dice1")
+	dice_2 = get_node("VendorMinigameTexture/Dice2")
 	dice_roll_sfx_player = get_node("DiceRollSFXPlayer")
-	dice_roll_button = get_node("Panel/DiceRollButton")
+	dice_roll_button = get_node("VendorMinigameTexture/DiceRollButton")
 	dice_1.position.x = -200
 	dice_2.position.x = -200
-	dice_roll_exhausted_label = get_node("Panel/DiceRollExhaustedLabel")
+	dice_roll_exhausted_label = get_node("VendorMinigameTexture/DiceRollExhaustedLabel")
 	dice_roll_exhausted_label.hide()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
