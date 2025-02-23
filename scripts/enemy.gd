@@ -32,7 +32,7 @@ func _ready() -> void:
 	cornered_block_timer = get_node("CorneredBlockTimer")
 	block_duration_timer = get_node("BlockDurationTimer")
 	enemy_attacked_sfx_player = get_node("EnemyAttackedSFXPlayer")
-	
+
 	# Triggers all effects on enemy
 	for effect in Globals.EnemyStatusEffects:
 		effect.trigger_effect(self)
@@ -45,7 +45,7 @@ func _physics_process(delta: float) -> void:
 
 func run_away() -> void:
 	# Player died
-	if (not Globals.Player):
+	if (not is_instance_valid(Globals.Player)):
 		pass
 
 	var enemy_x := position.x

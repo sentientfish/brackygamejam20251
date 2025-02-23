@@ -15,6 +15,7 @@ texture = ExtResource("4_x3vrb")
 expand_mode = 1
 
 [node name="Panel" type="Panel" parent="VendorMinigameTexture"]
+layout_mode = 0
 offset_right = 1160.0
 offset_bottom = 370.0
 mouse_filter = 2

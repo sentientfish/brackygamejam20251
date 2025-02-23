@@ -44,8 +44,7 @@ func roll_dice(dice: Node2D):
 	var dice_face: Enums.DiceFace = Enums.DiceFace.values()[dice_roll]
 	var dice_face_png = _dice_enum_map[dice_face]
 
-	var image = Image.load_from_file(dice_face_png)
-	var texture = ImageTexture.create_from_image(image)
+	var texture = load(dice_face_png)
 
 	dice.texture = texture
 	dice.set_meta("value", (dice_roll + 1))
