@@ -1,11 +1,14 @@
-[gd_scene load_steps=22 format=3 uid="uid://ch8wdr4iyy5qv"]
+[gd_scene load_steps=26 format=3 uid="uid://ch8wdr4iyy5qv"]
 
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_ndymx"]
 [ext_resource type="Texture2D" uid="uid://ci76kvedo1rh" path="res://assets/Electric-Shield_1.png" id="2_osfnp"]
 [ext_resource type="Texture2D" uid="uid://dixy1o1ebow21" path="res://assets/arm4.png" id="3_ru50b"]
 [ext_resource type="Texture2D" uid="uid://g0m7wo5kcem1" path="res://assets/Player.png" id="4_j8ytr"]
+[ext_resource type="Texture2D" uid="uid://04257twh5ppu" path="res://assets/arm1.png" id="4_t7gj3"]
 [ext_resource type="AudioStream" uid="uid://duff40s86phro" path="res://assets/sounds/Swordhitv2.wav" id="5_c11o0"]
+[ext_resource type="Texture2D" uid="uid://s6wee1np6gt4" path="res://assets/arm2.png" id="5_oqsw3"]
 [ext_resource type="PackedScene" uid="uid://b5wrk0yawkn2x" path="res://scenes/parrot.tscn" id="6_oyyfp"]
+[ext_resource type="Texture2D" uid="uid://urmbeefn813r" path="res://assets/arm3.png" id="6_pbkhf"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_752ta"]
 size = Vector2(192, 75.3125)
@@ -24,6 +27,26 @@ size = Vector2(150, 42)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_bkjqc"]
 size = Vector2(150, 41.5)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_76yi0"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_t7gj3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_oqsw3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_pbkhf")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_ru50b")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xox8q"]
 size = Vector2(185, 185)
@@ -57,38 +80,38 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("Sword/SwordSprite:position")
+tracks/2/path = NodePath("Shield/ShieldSprite:position")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(-4, 1)]
+"values": [Vector2(-114, 8)]
 }
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("Shield/ShieldSprite:position")
+tracks/3/path = NodePath("Sword/SwordAreaUp:monitoring")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(-114, 8)]
+"update": 1,
+"values": [false]
 }
 tracks/4/type = "value"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("Sword/SwordAreaUp:monitoring")
+tracks/4/path = NodePath("Sword/SwordAnimatedSprite:frame")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [false]
+"values": [0]
 }
 
 [sub_resource type="Animation" id="Animation_lp1sj"]
@@ -145,7 +168,7 @@ tracks/0/keys = {
 [sub_resource type="Animation" id="Animation_diara"]
 resource_name = "sword_attack_down"
 length = 0.5
-step = 0.25
+step = 0.125
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -161,20 +184,20 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Sword/SwordSprite:position")
+tracks/1/path = NodePath("Sword/SwordAnimatedSprite:frame")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.25, 0.5),
-"transitions": PackedFloat32Array(1, 1, 1),
+"times": PackedFloat32Array(0, 0.125, 0.25, 0.375, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
 "update": 1,
-"values": [Vector2(146, -50), Vector2(146, -80), Vector2(146, -50)]
+"values": [1, 2, 3, 1, 0]
 }
 
 [sub_resource type="Animation" id="Animation_f7bs3"]
 resource_name = "sword_attack_middle"
 length = 0.5
-step = 0.25
+step = 0.125
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -190,43 +213,43 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Sword/SwordSprite:position")
+tracks/1/path = NodePath("Sword/SwordAnimatedSprite:frame")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.25, 0.5),
-"transitions": PackedFloat32Array(1, 1, 1),
+"times": PackedFloat32Array(0, 0.125, 0.25, 0.375, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
 "update": 1,
-"values": [Vector2(146, -50), Vector2(146, -80), Vector2(146, -50)]
+"values": [1, 2, 3, 1, 0]
 }
 
 [sub_resource type="Animation" id="Animation_vs7me"]
 resource_name = "sword_attack_up"
 length = 0.5
-step = 0.25
+step = 0.125
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Sword/SwordSprite:position")
+tracks/0/path = NodePath("Sword/SwordAreaUp:monitoring")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.25, 0.5),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 1,
-"values": [Vector2(146, -50), Vector2(146, -80), Vector2(146, -50)]
+"values": [false, true, false]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Sword/SwordAreaUp:monitoring")
+tracks/1/path = NodePath("Sword/SwordAnimatedSprite:frame")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.25, 0.5),
-"transitions": PackedFloat32Array(1, 1, 1),
+"times": PackedFloat32Array(0, 0.125, 0.25, 0.375, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
 "update": 1,
-"values": [false, true, false]
+"values": [1, 2, 3, 1, 0]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_nr4rx"]
@@ -251,21 +274,18 @@ scale = Vector2(1.5, 1.5)
 texture = ExtResource("2_osfnp")
 
 [node name="ShieldAreaUp" type="Area2D" parent="Shield"]
-visible = false
 
 [node name="ShieldCollisionUp" type="CollisionShape2D" parent="Shield/ShieldAreaUp"]
 position = Vector2(0, -100)
 shape = SubResource("RectangleShape2D_752ta")
 
 [node name="ShieldAreaMiddle" type="Area2D" parent="Shield"]
-visible = false
 
 [node name="ShieldCollisionMiddle" type="CollisionShape2D" parent="Shield/ShieldAreaMiddle"]
 position = Vector2(0, -15)
 shape = SubResource("RectangleShape2D_yx7bf")
 
 [node name="ShieldAreaDown" type="Area2D" parent="Shield"]
-visible = false
 
 [node name="ShieldCollisionDown" type="CollisionShape2D" parent="Shield/ShieldAreaDown"]
 position = Vector2(0, 72)
@@ -273,13 +293,7 @@ shape = SubResource("RectangleShape2D_qrqje")
 
 [node name="Sword" type="Node2D" parent="."]
 
-[node name="SwordSprite" type="Sprite2D" parent="Sword"]
-position = Vector2(-4, 1)
-scale = Vector2(1.5, 1.5)
-texture = ExtResource("3_ru50b")
-
 [node name="SwordAreaUp" type="Area2D" parent="Sword"]
-visible = false
 monitoring = false
 
 [node name="SwordCollisionUp" type="CollisionShape2D" parent="Sword/SwordAreaUp"]
@@ -287,7 +301,6 @@ position = Vector2(0, -345)
 shape = SubResource("RectangleShape2D_xdwk7")
 
 [node name="SwordAreaMiddle" type="Area2D" parent="Sword"]
-visible = false
 monitoring = false
 
 [node name="SwordCollisionMiddle" type="CollisionShape2D" parent="Sword/SwordAreaMiddle"]
@@ -295,19 +308,22 @@ position = Vector2(0, -265)
 shape = SubResource("RectangleShape2D_2hsp2")
 
 [node name="SwordAreaDown" type="Area2D" parent="Sword"]
-visible = false
 monitoring = false
 
 [node name="SwordCollisionDown" type="CollisionShape2D" parent="Sword/SwordAreaDown"]
 position = Vector2(0, -185)
 shape = SubResource("RectangleShape2D_bkjqc")
 
+[node name="SwordAnimatedSprite" type="AnimatedSprite2D" parent="Sword"]
+position = Vector2(-8, -6)
+scale = Vector2(1.5, 1.5)
+sprite_frames = SubResource("SpriteFrames_76yi0")
+
 [node name="PlayerSprite" type="Sprite2D" parent="."]
 scale = Vector2(1.5, 1.5)
 texture = ExtResource("4_j8ytr")
 
 [node name="PlayerCollision" type="CollisionShape2D" parent="."]
-visible = false
 shape = SubResource("RectangleShape2D_xox8q")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]

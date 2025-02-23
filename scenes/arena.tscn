@@ -23,13 +23,11 @@ offset_right = 40.0
 offset_bottom = 40.0
 texture = ExtResource("2_ppnlw")
 
-[node name="Enemy" parent="." instance=ExtResource("2_yu7fl")]
-position = Vector2(960, 650)
-scale = Vector2(2, 2)
-
 [node name="Player" parent="." instance=ExtResource("1_1kr8c")]
-position = Vector2(960, 850)
-scale = Vector2(2, 2)
+position = Vector2(924, 885)
+
+[node name="Enemy" parent="." instance=ExtResource("2_yu7fl")]
+position = Vector2(952, 622)
 
 [node name="ArenaBoundary" type="StaticBody2D" parent="."]
 physics_material_override = SubResource("PhysicsMaterial_40apj")

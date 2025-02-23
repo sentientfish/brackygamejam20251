@@ -21,6 +21,7 @@ var panic_run_direction: int = 0
 var panic_timer: Timer = null
 var cornered_block_timer: Timer = null # how long before enemy can block again
 var block_duration_timer: Timer = null # enemy block duration
+var enemy_attacked_sfx_player: AudioStreamPlayer2D = null
 var last_block_direction: Enums.ActionDirection = Enums.ActionDirection.NONE
 
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
@@ -30,7 +31,8 @@ func _ready() -> void:
 	panic_timer = get_node("PanicRunTimer")
 	cornered_block_timer = get_node("CorneredBlockTimer")
 	block_duration_timer = get_node("BlockDurationTimer")
-
+	enemy_attacked_sfx_player = get_node("EnemyAttackedSFXPlayer")
+	
 	# Triggers all effects on enemy
 	for effect in Globals.EnemyStatusEffects:
 		effect.trigger_effect(self)
@@ -63,7 +65,6 @@ func run_away() -> void:
 func attack(action_direction: Enums.ActionDirection):
 	print("Enemy attacking direction: " +
 		Enums.ActionDirection.keys()[action_direction])
-	# TODO: play an actual animation
 	match action_direction:
 		Enums.ActionDirection.UP:
 			animation_player.play("sword_attack_up")
@@ -118,8 +119,10 @@ func attacked(player: Player, damage: int,
 		player.current_health -= current_block_damage
 		var attack_direction: Enums.ActionDirection = _get_random_direction()
 		attack(attack_direction)
+		await animation_player.animation_finished
 	else:
 		print("Enemy hit!")
+		enemy_attacked_sfx_player.play()
 		current_health -= damage
 		print("Current enemy health: " + str(current_health))
 
@@ -191,11 +194,11 @@ func _on_block_duration_timer_timeout() -> void:
 	can_block = false
 	unblock(last_block_direction)
 
-func _on_sword_area_up_body_entered(player: Player) -> void:
+func _on_sword_area_up_body_entered(player: CharacterBody2D) -> void:
 	player.attacked(self, stat_attack, Enums.ActionDirection.UP)
 
-func _on_sword_area_middle_body_entered(player: Player) -> void:
+func _on_sword_area_middle_body_entered(player: CharacterBody2D) -> void:
 	player.attacked(self, stat_attack, Enums.ActionDirection.MIDDLE)
 
-func _on_sword_area_down_body_entered(player: Player) -> void:
+func _on_sword_area_down_body_entered(player: CharacterBody2D) -> void:
 	player.attacked(self, stat_attack, Enums.ActionDirection.DOWN)

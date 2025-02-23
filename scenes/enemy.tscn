@@ -1,9 +1,12 @@
-[gd_scene load_steps=21 format=3 uid="uid://d2keyc5bivfqk"]
+[gd_scene load_steps=25 format=3 uid="uid://d2keyc5bivfqk"]
 
 [ext_resource type="Script" path="res://scripts/enemy.gd" id="1_kk3if"]
 [ext_resource type="Texture2D" uid="uid://dn4rt3wr7wugp" path="res://assets/EnemyShield.png" id="3_73nnx"]
 [ext_resource type="Texture2D" uid="uid://bsdfujx6bqklb" path="res://assets/Enemy.png" id="3_i5708"]
 [ext_resource type="Texture2D" uid="uid://i3325gxgme4k" path="res://assets/Enemy-Arm-1.png" id="4_71bxb"]
+[ext_resource type="Texture2D" uid="uid://mngciare6f7u" path="res://assets/Enemy-Arm-2.png" id="5_ocgm2"]
+[ext_resource type="Texture2D" uid="uid://b2vvpl1qisn3q" path="res://assets/Enemy-Arm-3.png" id="6_aic8f"]
+[ext_resource type="AudioStream" uid="uid://duff40s86phro" path="res://assets/sounds/Swordhitv2.wav" id="7_8iy6s"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_uyehj"]
 size = Vector2(192, 75.3125)
@@ -22,6 +25,23 @@ size = Vector2(150, 42)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ag5ug"]
 size = Vector2(150, 42)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_3idn4"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_71bxb")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_ocgm2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_aic8f")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_bu8gv"]
 size = Vector2(192, 192)
@@ -77,19 +97,19 @@ tracks/3/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(4, 10)]
+"values": [Vector2(22, -96)]
 }
 tracks/4/type = "value"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("Sword/SwordSprite:position")
+tracks/4/path = NodePath("Sword/SwordAnimatedSprite:frame")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(2, 3)]
+"update": 1,
+"values": [0]
 }
 
 [sub_resource type="Animation" id="Animation_dmsfe"]
@@ -106,7 +126,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.25),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
-"values": [Vector2(-117, 16), Vector2(-43, 89)]
+"values": [Vector2(22, -96), Vector2(68, -70)]
 }
 
 [sub_resource type="Animation" id="Animation_00n1s"]
@@ -123,7 +143,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.25),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
-"values": [Vector2(-117, 16), Vector2(-50, 17)]
+"values": [Vector2(22, -140), Vector2(91, -140)]
 }
 
 [sub_resource type="Animation" id="Animation_4cd7i"]
@@ -140,7 +160,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.25),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
-"values": [Vector2(-117, 16), Vector2(-61, -42)]
+"values": [Vector2(22, -96), Vector2(89, -219)]
 }
 
 [sub_resource type="Animation" id="Animation_fb6nt"]
@@ -162,14 +182,14 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Sword/SwordSprite:position")
+tracks/1/path = NodePath("Sword/SwordAnimatedSprite:frame")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
 "times": PackedFloat32Array(0, 0.25, 0.5),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 1,
-"values": [Vector2(146, -51), Vector2(147, -6), Vector2(146, -51)]
+"values": [1, 2, 0]
 }
 
 [sub_resource type="Animation" id="Animation_e0xkf"]
@@ -191,14 +211,14 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Sword/SwordSprite:position")
+tracks/1/path = NodePath("Sword/SwordAnimatedSprite:frame")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
 "times": PackedFloat32Array(0, 0.25, 0.5),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 1,
-"values": [Vector2(146, -51), Vector2(147, -6), Vector2(146, -51)]
+"values": [1, 2, 0]
 }
 
 [sub_resource type="Animation" id="Animation_javw3"]
@@ -220,14 +240,14 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Sword/SwordSprite:position")
+tracks/1/path = NodePath("Sword/SwordAnimatedSprite:frame")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
 "times": PackedFloat32Array(0, 0.25, 0.5),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 1,
-"values": [Vector2(146, -51), Vector2(147, -6), Vector2(146, -51)]
+"values": [1, 2, 0]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_nr4rx"]
@@ -245,43 +265,36 @@ _data = {
 script = ExtResource("1_kk3if")
 
 [node name="EnemySprite" type="Sprite2D" parent="."]
-scale = Vector2(2, 2)
+position = Vector2(26, -105)
+scale = Vector2(1.5, 1.5)
 texture = ExtResource("3_i5708")
 
 [node name="Shield" type="Node2D" parent="."]
 
 [node name="ShieldSprite" type="Sprite2D" parent="Shield"]
-position = Vector2(4, 10)
+position = Vector2(22, -96)
 scale = Vector2(2, 2)
 texture = ExtResource("3_73nnx")
 
 [node name="ShieldAreaUp" type="Area2D" parent="Shield"]
-visible = false
 
 [node name="ShieldCollisionUp" type="CollisionShape2D" parent="Shield/ShieldAreaUp"]
 position = Vector2(0, -100)
 shape = SubResource("RectangleShape2D_uyehj")
 
 [node name="ShieldAreaMiddle" type="Area2D" parent="Shield"]
-visible = false
 
 [node name="ShieldCollisionMiddle" type="CollisionShape2D" parent="Shield/ShieldAreaMiddle"]
 position = Vector2(0, -15)
 shape = SubResource("RectangleShape2D_gc8bk")
 
 [node name="ShieldAreaDown" type="Area2D" parent="Shield"]
-visible = false
 
 [node name="ShieldCollisionDown" type="CollisionShape2D" parent="Shield/ShieldAreaDown"]
 position = Vector2(0, 72)
 shape = SubResource("RectangleShape2D_f05na")
 
 [node name="Sword" type="Node2D" parent="."]
-
-[node name="SwordSprite" type="Sprite2D" parent="Sword"]
-position = Vector2(2, 3)
-scale = Vector2(2, 2)
-texture = ExtResource("4_71bxb")
 
 [node name="SwordAreaUp" type="Area2D" parent="Sword"]
 monitoring = false
@@ -304,12 +317,15 @@ monitoring = false
 position = Vector2(0, 320)
 shape = SubResource("RectangleShape2D_ag5ug")
 
+[node name="SwordAnimatedSprite" type="AnimatedSprite2D" parent="Sword"]
+position = Vector2(24, -99)
+scale = Vector2(1.5, 1.5)
+sprite_frames = SubResource("SpriteFrames_3idn4")
+
 [node name="EnemyCollision" type="CollisionShape2D" parent="."]
-visible = false
 shape = SubResource("RectangleShape2D_bu8gv")
 
 [node name="EnemyArea" type="Area2D" parent="."]
-visible = false
 
 [node name="EnemyAreaShape" type="CollisionShape2D" parent="EnemyArea"]
 shape = SubResource("RectangleShape2D_5orx6")
@@ -327,6 +343,10 @@ wait_time = 3.0
 
 [node name="BlockDurationTimer" type="Timer" parent="."]
 wait_time = 1.5
+
+[node name="EnemyAttackedSFXPlayer" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("7_8iy6s")
+bus = &"SFX"
 
 [connection signal="body_entered" from="Sword/SwordAreaUp" to="." method="_on_sword_area_up_body_entered"]
 [connection signal="body_entered" from="Sword/SwordAreaMiddle" to="." method="_on_sword_area_middle_body_entered"]
