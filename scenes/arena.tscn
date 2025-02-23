@@ -1,9 +1,12 @@
-[gd_scene load_steps=7 format=3 uid="uid://cuaglt8wdr002"]
+[gd_scene load_steps=10 format=3 uid="uid://cuaglt8wdr002"]
 
 [ext_resource type="PackedScene" uid="uid://ch8wdr4iyy5qv" path="res://scenes/player.tscn" id="1_1kr8c"]
 [ext_resource type="Script" path="res://scripts/arena.gd" id="1_om0ey"]
+[ext_resource type="Texture2D" uid="uid://mtowhknhcget" path="res://assets/Arena.png" id="2_ppnlw"]
 [ext_resource type="PackedScene" uid="uid://d2keyc5bivfqk" path="res://scenes/enemy.tscn" id="2_yu7fl"]
 [ext_resource type="PackedScene" uid="uid://0tle71xwn5n8" path="res://ui/hud.tscn" id="4_251cf"]
+[ext_resource type="AudioStream" uid="uid://b66aryl6ga18j" path="res://assets/sounds/enemydeathsoundv2.wav" id="6_mgdoo"]
+[ext_resource type="AudioStream" uid="uid://cftsc0gaflqom" path="res://assets/sounds/playerdeathsoundv2.wav" id="7_7db37"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_40apj"]
 
@@ -15,8 +18,13 @@ distance = 2.29814
 process_mode = 1
 script = ExtResource("1_om0ey")
 
+[node name="TextureRect" type="TextureRect" parent="."]
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("2_ppnlw")
+
 [node name="Enemy" parent="." instance=ExtResource("2_yu7fl")]
-position = Vector2(960, 335)
+position = Vector2(960, 650)
 scale = Vector2(2, 2)
 
 [node name="Player" parent="." instance=ExtResource("1_1kr8c")]
@@ -35,18 +43,25 @@ position = Vector2(1870, 590)
 rotation = -3.14159
 shape = SubResource("WorldBoundaryShape2D_bq4ab")
 
-[node name="Hud" parent="." instance=ExtResource("4_251cf")]
-offset_right = 1920.0
-offset_bottom = 1080.0
-
 [node name="VictoryLabel" type="Label" parent="."]
 offset_right = 1920.0
 offset_bottom = 250.0
 size_flags_horizontal = 4
 theme_override_font_sizes/font_size = 100
-text = "Temp Text"
 
 [node name="WinTimer" type="Timer" parent="."]
 wait_time = 5.0
+
+[node name="Hud" parent="." instance=ExtResource("4_251cf")]
+offset_right = 1920.0
+offset_bottom = 1080.0
+
+[node name="EnemyDeathSFXPlayer" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("6_mgdoo")
+bus = &"SFX"
+
+[node name="PlayerDeathSFXPlayer" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("7_7db37")
+bus = &"SFX"
 
 [connection signal="timeout" from="WinTimer" to="." method="_on_win_timer_timeout"]

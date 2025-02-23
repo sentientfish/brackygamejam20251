@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://b2spv0f7v8xk1"]
+[gd_scene load_steps=3 format=3 uid="uid://b2spv0f7v8xk1"]
 
 [ext_resource type="Script" path="res://scripts/menu_overlay.gd" id="1_uqqb4"]
+[ext_resource type="AudioStream" uid="uid://b0xxu0dllhwkl" path="res://assets/sounds/blipSelectV2.wav" id="2_jw0bt"]
 
 [node name="MenuOverlay" type="Control"]
 process_mode = 2
@@ -10,6 +11,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 script = ExtResource("1_uqqb4")
 
 [node name="MenuOverlayContainer" type="MarginContainer" parent="."]
@@ -55,7 +57,15 @@ text = "Exit Game"
 layout_mode = 2
 text = "Continue"
 
+[node name="MenuOverlaySFXPlayer" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("2_jw0bt")
+volume_db = -10.0
+
+[connection signal="mouse_entered" from="MenuOverlayContainer/VBoxContainer/MainMenuButton" to="." method="_on_main_menu_button_mouse_entered"]
 [connection signal="pressed" from="MenuOverlayContainer/VBoxContainer/MainMenuButton" to="." method="_on_main_menu_button_pressed"]
+[connection signal="mouse_entered" from="MenuOverlayContainer/VBoxContainer/OptionsButton" to="." method="_on_options_button_mouse_entered"]
 [connection signal="pressed" from="MenuOverlayContainer/VBoxContainer/OptionsButton" to="." method="_on_options_button_pressed"]
+[connection signal="mouse_entered" from="MenuOverlayContainer/VBoxContainer/QuitButton" to="." method="_on_quit_button_mouse_entered"]
 [connection signal="pressed" from="MenuOverlayContainer/VBoxContainer/QuitButton" to="." method="_on_quit_button_pressed"]
+[connection signal="mouse_entered" from="MenuOverlayContainer/VBoxContainer/ContinueButton" to="." method="_on_continue_button_mouse_entered"]
 [connection signal="pressed" from="MenuOverlayContainer/VBoxContainer/ContinueButton" to="." method="_on_continue_button_pressed"]

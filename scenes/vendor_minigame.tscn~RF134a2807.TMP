@@ -1,0 +1,49 @@
+[gd_scene load_steps=3 format=3 uid="uid://bau575m3jy3jt"]
+
+[ext_resource type="Script" path="res://scripts/vendor_minigame.gd" id="1_ebt4i"]
+[ext_resource type="Texture2D" uid="uid://by38ebvcx2f8a" path="res://assets/sprites/die_1.png" id="1_rm8qw"]
+
+[node name="VendorMinigame" type="Node2D"]
+script = ExtResource("1_ebt4i")
+
+[node name="Panel" type="Panel" parent="."]
+offset_right = 1159.0
+offset_bottom = 366.0
+
+[node name="DiceRollButton" type="Button" parent="Panel"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -72.5
+offset_top = 50.0
+offset_right = 72.5
+offset_bottom = 81.0
+grow_horizontal = 2
+text = "Gamble your Fate"
+
+[node name="Dice1" type="Sprite2D" parent="Panel"]
+position = Vector2(399, 200)
+scale = Vector2(2, 2)
+texture = ExtResource("1_rm8qw")
+metadata/value = 1
+
+[node name="Dice2" type="Sprite2D" parent="Panel"]
+position = Vector2(718, 247)
+scale = Vector2(2, 2)
+texture = ExtResource("1_rm8qw")
+metadata/value = 1
+
+[node name="DiceRollExhaustedLabel" type="Label" parent="Panel"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -128.5
+offset_top = 20.0
+offset_right = 128.5
+offset_bottom = 66.0
+grow_horizontal = 2
+text = "You have exhausted your destiny"
+
+[connection signal="pressed" from="Panel/DiceRollButton" to="." method="_on_dice_roll_button_pressed"]

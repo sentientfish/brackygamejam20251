@@ -10,6 +10,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 script = ExtResource("1_oirw8")
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
@@ -19,6 +20,10 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="MarginContainer"]
+layout_mode = 2
+color = Color(0, 0, 0, 1)
 
 [node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
 layout_mode = 2
@@ -40,7 +45,7 @@ text = "Art"
 
 [node name="Label2" type="Label" parent="MarginContainer/VBoxContainer/CreditsArtsContainer"]
 layout_mode = 2
-text = "UhhHehHeh"
+text = "Abraham Cuenca"
 
 [node name="CreditsMusicContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
@@ -64,7 +69,7 @@ text = "Programmers"
 
 [node name="Label2" type="Label" parent="MarginContainer/VBoxContainer/CreditsProgrammerContainer"]
 layout_mode = 2
-text = "Aguren, c"
+text = "Aguren, Abraham Cuenca"
 
 [node name="CreditsStorylineContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
@@ -76,7 +81,7 @@ text = "Storyline"
 
 [node name="Label2" type="Label" parent="MarginContainer/VBoxContainer/CreditsStorylineContainer"]
 layout_mode = 2
-text = "???"
+text = "N/A"
 
 [node name="CreditsGameDesignContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
@@ -88,7 +93,7 @@ text = "Game Design"
 
 [node name="Label2" type="Label" parent="MarginContainer/VBoxContainer/CreditsGameDesignContainer"]
 layout_mode = 2
-text = "???"
+text = "Aguren, Abraham Cuenca"
 
 [node name="CreditsBackButton" type="Button" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
