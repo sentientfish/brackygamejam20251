@@ -6,8 +6,12 @@ var parrot_sfx_timer: Timer = null
 var _min_sfx_timer := 2.5
 var _max_sfx_timer := 6.0
 
+const PARROT_VICTORY_VOICELINE_PATH := \
+		"res://assets/sounds/ParrotSquakVictory.wav"
+
 var _parrot_voicelines = [
-	preload("res://assets/sounds/blipSelectV1.wav"),
+	preload("res://assets/sounds/ParrotSquakOne.wav"),
+	preload("res://assets/sounds/ParrotSquakTwo.wav"),
 ]
 
 # Called when the node enters the scene tree for the first time.
@@ -36,6 +40,9 @@ func _select_random_parrot_voiceline():
 
 func _on_enemy_died() -> void:
 	parrot_sfx_timer.stop()
+	
+	parrot_sfx_player.stream = preload(PARROT_VICTORY_VOICELINE_PATH)
+	parrot_sfx_player.play()
 
 func _on_player_died() -> void:
 	parrot_sfx_timer.stop()
