@@ -13,7 +13,7 @@ var _parrot_voicelines = [
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	parrot_sfx_player = get_node("ParrotSFXPlayer")
-	parrot_sfx_timer = get_node("Parrot_SFXTimer")
+	parrot_sfx_timer = get_node("ParrotSFXTimer")
 	
 	Globals.connect("EnemyDied", _on_enemy_died)
 	Globals.connect("PlayerDied", _on_player_died)

@@ -22,4 +22,5 @@ var VendorItems := [
 	TrollsHeart.new(),
 	FoodPoisoning.new(),
 	BigBadShield.new(),
+	ShoulderParrot.new(),
 ]

@@ -1,10 +1,10 @@
-class_name Parrot extends Effect
+class_name ShoulderParrot extends Effect
 
 func trigger_effect(character: CharacterBody2D) -> void:
-	Globals.ParrotObtained = true
+	character.parrot_obtained = true
 
 func _init():
-	var image = Image.load_from_file("res://assets/sprites/vendor_items/Quickfeet.png")
+	var image = Image.load_from_file("res://assets/sprites/vendor_items/ShoulderParrot.png")
 	var texture = ImageTexture.create_from_image(image)
 	
 	icon = texture

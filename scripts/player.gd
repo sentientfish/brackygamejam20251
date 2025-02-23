@@ -16,9 +16,10 @@ class_name Player extends CharacterBody2D
 var blocking: Array = [false, false, false]
 var is_blocking: bool = false
 var block_all: bool = false
+var parrot_obtained: bool = false
 var current_block_direction: Enums.ActionDirection = Enums.ActionDirection.NONE
 var player_attacked_sfx_player: AudioStreamPlayer2D = null
-var parrot : Parrot = null
+var parrot: Node2D = null
 
 @onready var animation_player : AnimationPlayer = $AnimationPlayer
 
@@ -31,10 +32,9 @@ func _ready() -> void:
 	for effect in Globals.PlayerStatusEffects:
 		effect.trigger_effect(self)
 		
-	if (Globals.ParrotObtained):
+	if (parrot_obtained):
 		parrot.show()
-		var parrot_sfx_timer: Timer = parrot.get_node("ParrotSFXTimer")
-		parrot_sfx_timer.start()
+		parrot.start_parrot()
 	else:
 		parrot.hide()
 
