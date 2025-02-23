@@ -41,8 +41,9 @@ func _select_random_parrot_voiceline():
 func _on_enemy_died() -> void:
 	parrot_sfx_timer.stop()
 	
-	parrot_sfx_player.stream = preload(PARROT_VICTORY_VOICELINE_PATH)
-	parrot_sfx_player.play()
+	if (parrot_sfx_player.stream != null):
+		parrot_sfx_player.stream = preload(PARROT_VICTORY_VOICELINE_PATH)
+		parrot_sfx_player.play()
 
 func _on_player_died() -> void:
 	parrot_sfx_timer.stop()
